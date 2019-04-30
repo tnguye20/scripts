@@ -44,7 +44,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Config Files
-git clone https://github.com/tnguye20/.dotfiles.git ~
+git clone --single-branch -b ArchSimple git@github.com:tnguye20/.dotfiles.git ~
 cp ~/.dotfiles/.vimrc ~
 cp ~/.dotfiles/.zshrc ~
 cp ~/.dotfiles/.tmux.conf.local ~
