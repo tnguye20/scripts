@@ -111,6 +111,13 @@ su - $user -c "vim -c 'PlugUpdate' +qa"
 su - $user -c "vim -c 'PlugInstall' +qa"
 su - $user -c "source /home/$user/.vimrc"
 
+# Set Default Wallpaper
 # su - $user -c "feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg"
 feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg
+
+# Restart i3
+i3-msg reload
+i3-msg restart
+
+# Update Permission
 chown -R $user:$user /home/$user/
