@@ -11,6 +11,7 @@ else
 fi
 
 cd
+
 pacman -Syu --noconfirm
 if pacman -Qi git > /dev/null; then
   echo "Git is already installed"
@@ -22,6 +23,12 @@ if pacman -Qi xclip > /dev/null; then
   echo "xclip is already install"
 else
   pacman -S xclip --noconfirm
+fi
+
+if pacman -Qi feh > /dev/null; then
+  echo "feh is already install"
+else
+  pacman -S feh --noconfirm
 fi
 
 # ssh keygen
@@ -104,4 +111,6 @@ su - $user -c "vim -c 'PlugUpdate' +qa"
 su - $user -c "vim -c 'PlugInstall' +qa"
 su - $user -c "source /home/$user/.vimrc"
 
+# su - $user -c "feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg"
+feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg
 chown -R $user:$user /home/$user/
