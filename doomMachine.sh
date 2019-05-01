@@ -47,9 +47,9 @@ if pacman -Qi google-chrome > /dev/null; then
 else
   git clone https://aur.archlinux.org/google-chrome.git /home/$user/google-chrome
   cd /home/$user/google-chrome
+  pacman -U --noconfirm ./google-chrome-*.pkg.tar.xz
   su - $user -c "makepkg -s"
-  pacman -U --noconfirm google-chrome-*.pkg.tar.xz
-  cd
+  cd /home/$user/
   rm -rf /home/$user/google-chrome
 fi
 
@@ -61,7 +61,7 @@ else
   git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
   cd /home/$user/rxvt-unicode-pixbuf
   su - $user -c "makepkg -si"
-  cd
+  cd /home/$user/
   rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
 
