@@ -10,7 +10,7 @@ else
   dotBranch=$2
 fi
 
-cd
+cd /home/$user
 
 pacman -Syu --noconfirm
 if pacman -Qi git > /dev/null; then
@@ -45,12 +45,12 @@ fi
 if pacman -Qi google-chrome > /dev/null; then
   echo "Google Chrome is already installed"
 else
-  git clone https://aur.archlinux.org/google-chrome.git
-  cd google-chrome
-  makepkg -s
+  git clone https://aur.archlinux.org/google-chrome.git /home/$user/google-chrome
+  cd /home/$user/google-chrome
+  su - $user -c "makepkg -s"
   pacman -U --noconfirm google-chrome-*.pkg.tar.xz
   cd
-  rm -rf google-chrome
+  rm -rf /home/$user/google-chrome
 fi
 
 # rxvt-unicode-pixbuf Install
@@ -58,11 +58,11 @@ if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
   echo "rxvt-unicode-pixbuf is already install"
 else
   pacman -R rxvt-unicode --noconfirm
-  git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
-  cd rxvt-unicode-pixbuf
-  makepkg -si
+  git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
+  cd /home/$user/rxvt-unicode-pixbuf
+  su - $user -c "makepkg -si"
   cd
-  rm -rf rxvt-unicode-pixbuf
+  rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
 
 # Tmux and oh-my-tmux
@@ -86,8 +86,8 @@ if [ -f /home/$user/antigen.zsh ]; then
   echo "antigen is already installed"
 else
   curl -L git.io/antigen > /home/$user/antigen.zsh
-  source /home/$user/antigen.zsh
 fi
+source /home/$user/antigen.zsh
 
 # Config Files
 if [ -d /home/$user/.dotfiles ]; then
@@ -98,7 +98,7 @@ if [ -d /home/$user/.dotfiles ]; then
 else
   git clone --single-branch -b $dotBranch https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
   ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
-  ln -s -f /home/$user/.dotfiles/.zshrc /gome/$user/
+  ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
   ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
   ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 fi
@@ -107,8 +107,8 @@ fi
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 su - $user -c "source /home/$user/.zshrc"
-su - $user -c "vim -c 'PlugUpdate' +qa"
-su - $user -c "vim -c 'PlugInstall' +qa"
+su - $user -c "vim +'PlugUpdate' +qa"
+su - $user -c "vim +'PlugInstall' +qa"
 su - $user -c "source /home/$user/.vimrc"
 
 # Set Default Wallpaper
