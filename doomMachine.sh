@@ -1,5 +1,11 @@
 #!/bin/sh
 
+
+if [ "$1" == "" ]; then
+  echo "Pleass enter username!!!"
+  exit 1
+fi
+
 echo "Start Installation"
 
 user=$1
@@ -12,11 +18,32 @@ fi
 
 cd /home/$user
 
+# Update packages
 pacman -Syu --noconfirm
+
+# Install Git and basic config vars
 if pacman -Qi git > /dev/null; then
   echo "Git is already installed"
 else
   pacman -S git --noconfirm
+  su - $user -c "git config --global 'user.name' 'Thang Nguyen'"
+  su - $user -c "git config --global 'user.email' 'tnguye20@uvm.edu'"
+fi
+
+# Install meld and diff/merge tool
+if pacman -Qi meld > /dev/null; then
+  echo "Meld is already installed"
+else
+  pacman -S meld --noconfirm
+  su - $user -c "git config --global diff.tool meld"
+  su - $user -c "git config --global difftool.meld.path '/usr/bin/meld'"
+  su - $user -c "git config --global difftool.prompt false"
+  su - $user -c "git config --global difftool.meld.cmd 'meld \"$LOCAL\" \"$REMOTE\"'"
+
+  su - $user -c "git config --global merge.tool meld"
+  su - $user -c "git config --global mergetool.meld.path '/usr/bin/meld'"
+  su - $user -c "git config --global mergetool.prompt false"
+  su - $user -c "git config --global mergetool.meld.cmd 'meld \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\"'"
 fi
 
 if pacman -Qi xclip > /dev/null; then
@@ -47,7 +74,7 @@ if pacman -Qi google-chrome > /dev/null; then
 else
   git clone https://aur.archlinux.org/google-chrome.git /home/$user/google-chrome
   cd /home/$user/google-chrome
-  pacman -U --noconfirm ./google-chrome-*.pkg.tar.xz
+  pacman -U --noconfirm google-chrome-*.pkg.tar.xz
   su - $user -c "makepkg -s"
   cd /home/$user/
   rm -rf /home/$user/google-chrome
@@ -66,7 +93,12 @@ else
 fi
 
 # Tmux and oh-my-tmux
-pacman -S tmux --noconfirm
+
+if pacman -Qi tmux> /dev/null; then
+  echo "tmux is already install"
+else
+  pacman -S tmux --noconfirm
+fi
 if [ -d /home/$user/.tmux ]; then
   echo "oh-my-tmux is already installed"
 else
@@ -87,7 +119,7 @@ if [ -f /home/$user/antigen.zsh ]; then
 else
   curl -L git.io/antigen > /home/$user/antigen.zsh
 fi
-source /home/$user/antigen.zsh
+su - $user -c "source /home/$user/antigen.zsh"
 
 # Config Files
 if [ -d /home/$user/.dotfiles ]; then
@@ -97,6 +129,8 @@ if [ -d /home/$user/.dotfiles ]; then
   git pull origin $dotBranch
 else
   git clone --single-branch -b $dotBranch https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
+  cd /home/$user/.dotfiles/
+  git remote set-url origin git@github.com:tnguye20/.dotfiles.git
   ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
   ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
   ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
@@ -112,12 +146,10 @@ su - $user -c "vim +'PlugInstall' +qa"
 su - $user -c "source /home/$user/.vimrc"
 
 # Set Default Wallpaper
-# su - $user -c "feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg"
 feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg
 
 # Restart i3
 i3-msg reload
-i3-msg restart
 
 # Update Permission
 chown -R $user:$user /home/$user/
