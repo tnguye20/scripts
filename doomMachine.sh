@@ -20,6 +20,8 @@ cd /home/$user
 
 # Update packages
 pacman -Syu --noconfirm
+pacman -S bat
+pacman -S terminology
 
 # Install Git and basic config vars
 if pacman -Qi git > /dev/null; then
