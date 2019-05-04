@@ -11,7 +11,7 @@ echo "Start Installation"
 user=$1
 
 if [ "$2" == "" ]; then
-  dotBranch="ArchSimple"
+  dotBranch="master"
 else
   dotBranch=$2
 fi
