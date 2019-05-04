@@ -88,7 +88,6 @@ fi
 if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
   echo "rxvt-unicode-pixbuf is already install"
 else
-  sudo pacman -R rxvt-unicode --noconfirm
   git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
   cd /home/$user/rxvt-unicode-pixbuf
   makepkg -si
@@ -122,7 +121,6 @@ if [ -f /home/$user/antigen.zsh ]; then
 else
   curl -L git.io/antigen > /home/$user/antigen.zsh
 fi
-source /home/$user/antigen.zsh
 
 # Config Files
 if [ -d /home/$user/.dotfiles ]; then
