@@ -25,6 +25,22 @@ cd /home/$user
 pacman -Syu --noconfirm
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
+sudo pacman -S gvim --noconfirm
+
+# Music Tool
+sudo pacman -S cmus --noconfirm
+sudo pacman -S mpd ncmpcpp mpc --noconfirm
+mkdir -p ~/.config/mpd/
+mkdir ~/.config/mpd/playlists
+
+# Calendar Tool
+sudo pacman -S calcurse --noconfirm
+
+#Screenshot Tool
+sudo pacman -S flameshot --noconfirm
+if [ ! -d ~/Pictures/Screenshots ]; then
+  mkdir -p ~/Pictures/Screenshots
+fi
 
 # Install Git and basic config vars
 if pacman -Qi git > /dev/null; then
@@ -34,6 +50,9 @@ else
   git config --global 'user.name' 'Thang Nguyen'
   git config --global 'user.email' 'tnguye20@uvm.edu'
 fi
+
+# Get BumbleBee Status for i3Status
+[ ! -d ~/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
 
 # Install meld and diff/merge tool
 if pacman -Qi meld > /dev/null; then
@@ -130,12 +149,15 @@ if [ -d /home/$user/.dotfiles ]; then
   git pull origin $dotBranch
 else
   git clone --single-branch -b $dotBranch https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
-  cd /home/$user/.dotfiles/
-  ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
-  ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
-  ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
-  ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 fi
+ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
+ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
+ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
+ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
+ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
+ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf ~/.config/ranger
+ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse
+ln -s -f /home/$user/.dotfiles/.calcurse/keys ~/.calcurse
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -146,7 +168,7 @@ vim +'PlugInstall' +qa
 source /home/$user/.vimrc
 
 # Set Default Wallpaper
-feh --bg-scale /home/$user/.dotfiles/.wallpaper/mr_robot.jpg
+feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
 
 # Set ranger config
 ranger --copy-config=all
