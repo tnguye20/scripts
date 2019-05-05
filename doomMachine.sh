@@ -26,6 +26,7 @@ pacman -Syu --noconfirm
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
+sudo pacman -S copyq --noconfirm
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
