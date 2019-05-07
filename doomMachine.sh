@@ -28,6 +28,7 @@ sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
 sudo pacman -S copyq --noconfirm
 
+
 # Music Tool
 sudo pacman -S cmus --noconfirm
 sudo pacman -S mpd ncmpcpp mpc --noconfirm
@@ -162,6 +163,13 @@ ln -s -f /home/$user/.dotfiles/.calcurse/keys ~/.calcurse/
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Ctags
+git clone https://aur.archlinux.org/universal-ctags-git.git
+cd universal-ctags-git
+makepkg -si
+cd
+rm universal-ctags-git
 
 source /home/$user/.zshrc
 vim +'PlugUpdate' +qa
