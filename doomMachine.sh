@@ -159,7 +159,7 @@ ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
 ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf ~/.config/ranger/
 ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
-ln -s -f /home/$user/.dotfiles/.calcurse/keys ~/.calcurse/
+ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
