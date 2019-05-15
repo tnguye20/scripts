@@ -176,6 +176,10 @@ vim +'PlugUpdate' +qa
 vim +'PlugInstall' +qa
 source /home/$user/.vimrc
 
+# Install pywal
+sudo pacman -S python-pip --noconfirm
+sudo pip3 install pywal
+
 # Set Default Wallpaper
 feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
 
