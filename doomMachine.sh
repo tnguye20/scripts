@@ -21,12 +21,15 @@ sudo su - root -c  "echo \"$user     ALL=(ALL) NOPASSWD:ALL \" >> /etc/sudoers "
 
 cd /home/$user
 
-# Update packages
+# Update packages and install random things that I like
 pacman -Syu --noconfirm
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
 sudo pacman -S copyq --noconfirm
+sudo pacman -S figlet --noconfirm
+sudo pacman -S xorg-server --noconfirm
+sudo pacman -S cmatrix --noconfirm
 
 
 # Music Tool
@@ -44,13 +47,22 @@ if [ ! -d ~/Pictures/Screenshots ]; then
   mkdir -p ~/Pictures/Screenshots
 fi
 
-# Install Git and basic config vars
+# Install Git, Git lfs and basic config vars
 if pacman -Qi git > /dev/null; then
   echo "Git is already installed"
 else
   sudo pacman -S git --noconfirm
   git config --global 'user.name' 'Thang Nguyen'
   git config --global 'user.email' 'tnguye20@uvm.edu'
+
+  mdkir -p ~/lfs
+  cd lfs
+  curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
+  tar -xzvf lfs.tar.gz
+  sh ./install.sh
+  git lfs install
+  cd ~
+  rm -rf lfs
 fi
 
 # Get BumbleBee Status for i3Status
@@ -61,15 +73,6 @@ if pacman -Qi meld > /dev/null; then
   echo "Meld is already installed"
 else
   sudo pacman -S meld --noconfirm
-  git config --global diff.tool meld
-  git config --global difftool.meld.path '/usr/bin/meld'
-  git config --global difftool.prompt false
-  git config --global difftool.meld.cmd 'meld \"$LOCAL\" \"$REMOTE\"'
-
-  git config --global merge.tool meld
-  git config --global mergetool.meld.path '/usr/bin/meld'
-  git config --global mergetool.prompt false
-  git config --global mergetool.meld.cmd 'meld \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\"'
 fi
 
 if pacman -Qi xclip > /dev/null; then
@@ -151,6 +154,7 @@ if [ -d /home/$user/.dotfiles ]; then
   git pull origin $dotBranch
 else
   git clone --single-branch -b $dotBranch https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
+  git lfs install
 fi
 ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
@@ -160,6 +164,7 @@ ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
 ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf ~/.config/ranger/
 ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
 ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
+ln -s -f /home/$user/.dotfiles/.gitconfig ~/.gitconfig
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
