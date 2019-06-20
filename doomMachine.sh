@@ -108,6 +108,17 @@ else
   rm -rf /home/$user/google-chrome
 fi
 
+# fpp Install
+if pacman -Qi fpp > /dev/null; then
+  echo "fpp is already installed"
+else
+  git clone https://aur.archlinux.org/fpp-git.git /home/$user/fpp-git
+  cd /home/$user/fpp-git
+  makepkg -si
+  cd /home/$user/
+  rm -rf /home/$user/fpp-git
+fi
+
 # rxvt-unicode-pixbuf Install
 if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
   echo "rxvt-unicode-pixbuf is already install"
