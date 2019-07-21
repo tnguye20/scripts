@@ -30,7 +30,7 @@ sudo pacman -S copyq --noconfirm
 sudo pacman -S figlet --noconfirm
 sudo pacman -S xorg-server --noconfirm
 sudo pacman -S cmatrix --noconfirm
-
+sudo pacman -S neofetch --noconfirm
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
@@ -173,6 +173,7 @@ ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
 ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
 ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf ~/.config/ranger/
+ln -s -f /home/$user/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/
 ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
 ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
 ln -s -f /home/$user/.dotfiles/.gitconfig ~/.gitconfig
@@ -197,7 +198,8 @@ sudo pacman -S python-pip --noconfirm
 sudo pip3 install pywal
 
 # Set Default Wallpaper
-feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
+# feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
+sh ~/scripts/randomWallpaper
 
 # Set ranger config
 ranger --copy-config=all
