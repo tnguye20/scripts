@@ -31,6 +31,7 @@ sudo pacman -S figlet --noconfirm
 sudo pacman -S xorg-server --noconfirm
 sudo pacman -S cmatrix --noconfirm
 sudo pacman -S neofetch --noconfirm
+sudo pacman -S gifsicle --noconfirm
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
