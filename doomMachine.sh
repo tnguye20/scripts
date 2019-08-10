@@ -178,6 +178,7 @@ ln -s -f /home/$user/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/
 ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
 ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
 ln -s -f /home/$user/.dotfiles/.gitconfig ~/.gitconfig
+ln -s -f /home/$user/.dotfiles/.profile ~/.profile
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
