@@ -104,7 +104,7 @@ if pacman -Qi google-chrome > /dev/null; then
 else
   git clone https://aur.archlinux.org/google-chrome.git /home/$user/google-chrome
   cd /home/$user/google-chrome
-  makepkg -si
+  makepkg -si --noconfirm
   cd /home/$user/
   rm -rf /home/$user/google-chrome
 fi
@@ -115,7 +115,7 @@ if pacman -Qi fpp > /dev/null; then
 else
   git clone https://aur.archlinux.org/fpp-git.git /home/$user/fpp-git
   cd /home/$user/fpp-git
-  makepkg -si
+  makepkg -si --noconfirm
   cd /home/$user/
   rm -rf /home/$user/fpp-git
 fi
@@ -126,7 +126,7 @@ if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
 else
   git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
   cd /home/$user/rxvt-unicode-pixbuf
-  makepkg -si
+  makepkg -si --noconfirm
   cd /home/$user/
   rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
@@ -158,15 +158,16 @@ else
   curl -L git.io/antigen > /home/$user/antigen.zsh
 fi
 
-# Config Files
+# Config Files and Scripts
 if [ -d /home/$user/.dotfiles ]; then
   echo ".dotfiles is already cloned"
   cd /home/$user/.dotfiles
   git fetch
   git pull origin $dotBranch
 else
-  git clone --single-branch -b $dotBranch https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
   git lfs install
+  git clone https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
+  git clone https://github.com/tnguye20/scripts.git /home/$user/scripts
 fi
 ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
@@ -186,7 +187,7 @@ curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubuse
 # Ctags
 git clone https://aur.archlinux.org/universal-ctags-git.git
 cd universal-ctags-git
-makepkg -si
+makepkg -si --noconfirm
 cd
 rm universal-ctags-git
 
@@ -211,3 +212,7 @@ i3-msg reload
 
 # Update Permission
 chown -R $user:$user /home/$user/
+
+if [ -f "/home/$user/doomMachine.sh" ];then
+  rm -rf "/home/$user/doomMachine.sh"
+fi
