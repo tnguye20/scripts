@@ -22,7 +22,7 @@ sudo su - root -c  "echo \"$user     ALL=(ALL) NOPASSWD:ALL \" >> /etc/sudoers "
 cd /home/$user
 
 # Update packages and install random things that I like
-pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
