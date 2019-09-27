@@ -182,6 +182,7 @@ ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
 ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
 ln -s -f /home/$user/.dotfiles/.gitconfig ~/.gitconfig
 ln -s -f /home/$user/.dotfiles/.profile ~/.profile
+ln -s -f /home/$user/.dotfiles/.cool-retro-term ~/cool-retro-term
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
