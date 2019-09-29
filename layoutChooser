@@ -1,0 +1,5 @@
+#!/bin/bash
+
+layoutpath=$HOME/.screenlayout/
+layout=$(ls -l $layoutpath | sed '1d' | awk '{ print $9 } ' | dmenu -b -l 9)
+sh $layoutpath$layout
