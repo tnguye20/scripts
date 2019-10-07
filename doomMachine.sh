@@ -160,6 +160,13 @@ else
   curl -L git.io/antigen > /home/$user/antigen.zsh
 fi
 
+# Install st - the suckless terminal for VIM colors mostly
+git clone https://github.com/LukeSmithxyz/st.git /home/$user/st
+cd /home/$user/st
+make
+sudo make install
+cd
+
 # Config Files and Scripts
 if [ -d /home/$user/.dotfiles ]; then
   echo ".dotfiles is already cloned"
