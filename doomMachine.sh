@@ -34,6 +34,7 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S gifsicle --noconfirm
 sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
+sudo pacman -S firefox --noconfirm
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
