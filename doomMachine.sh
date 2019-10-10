@@ -162,7 +162,7 @@ else
 fi
 
 # Install st - the suckless terminal for VIM colors mostly
-git clone https://github.com/LukeSmithxyz/st.git /home/$user/st
+git clone https://github.com/tnguye20/st.git /home/$user/st
 cd /home/$user/st
 make
 sudo make install
