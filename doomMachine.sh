@@ -35,6 +35,8 @@ sudo pacman -S gifsicle --noconfirm
 sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
 sudo pacman -S firefox --noconfirm
+sudo pacman -S npm --noconfirm
+sudo pacman -S nodejs --noconfirm
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
@@ -56,18 +58,18 @@ if pacman -Qi git > /dev/null; then
   echo "Git is already installed"
 else
   sudo pacman -S git --noconfirm
-  git config --global 'user.name' 'Thang Nguyen'
-  git config --global 'user.email' 'tnguye20@uvm.edu'
-
-  mdkir -p ~/lfs
-  cd lfs
-  curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
-  tar -xzvf lfs.tar.gz
-  sh ./install.sh
-  git lfs install
-  cd ~
-  rm -rf lfs
 fi
+git config --global 'user.name' 'Thang Nguyen'
+git config --global 'user.email' 'tnguye20@uvm.edu'
+
+mdkir -p ~/lfs
+cd lfs
+curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
+tar -xzvf lfs.tar.gz
+sh install.sh
+git lfs install
+cd ~
+rm -rf lfs
 
 # Get BumbleBee Status for i3Status
 [ ! -d ~/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
@@ -99,17 +101,6 @@ else
   eval "$(ssh-agent -s)"
   ssh-add /home/$user/.ssh/id_rsa
   xclip -sel clip < /home/$user/.ssh/id_rsa.pub
-fi
-
-# Google Chrome Install
-if pacman -Qi google-chrome > /dev/null; then
-  echo "Google Chrome is already installed"
-else
-  git clone https://aur.archlinux.org/google-chrome.git /home/$user/google-chrome
-  cd /home/$user/google-chrome
-  makepkg -si --noconfirm
-  cd /home/$user/
-  rm -rf /home/$user/google-chrome
 fi
 
 # fpp Install
@@ -209,7 +200,7 @@ source /home/$user/.vimrc
 
 # Install pywal
 sudo pacman -S python-pip --noconfirm
-sudo pip3 install pywal
+sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
 # feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
@@ -218,11 +209,17 @@ sh ~/scripts/randomWallpaper
 # Set ranger config
 ranger --copy-config=all
 
+# Set default shell to zsh
+sudo usermod --shell /bin/zsh tnguye20
+
 # Restart i3
 i3-msg reload
 
 # Update Permission
 chown -R $user:$user /home/$user/
+
+# Kick you into ZSH
+zsh
 
 if [ -f "/home/$user/doomMachine.sh" ];then
   rm -rf "/home/$user/doomMachine.sh"
