@@ -169,6 +169,10 @@ else
   git lfs install
   git clone https://github.com/tnguye20/.dotfiles.git /home/$user/.dotfiles
   git clone https://github.com/tnguye20/scripts.git /home/$user/scripts
+  cd /home/$user/.dotfiles
+  git lfs install
+  git lfs pull
+  cd
 fi
 ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
