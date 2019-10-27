@@ -1,7 +1,13 @@
 #!/bin/sh
 
-wallpaper_path=$HOME/.dotfiles/.wallpaper/
-image=`ls -l $wallpaper_path| sed '1d' | awk '{print $9}' | shuf -n 1`
-sudo cp $wallpaper_path$image /usr/share/backgrounds/lockscreen.png
+if [ $# = 0 ];then
+  echo "Require Action to Execute"
+fi
 
-i3exit logout
+action=$1
+
+image=$(/home/$USER/scripts/randomImageGet)
+
+sudo cp $image /usr/share/backgrounds/lockscreen.png
+
+i3exit $action
