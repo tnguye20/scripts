@@ -114,6 +114,17 @@ else
   rm -rf /home/$user/fpp-git
 fi
 
+# Slack Install
+if pacman -Qi slack-desktop > /dev/null; then
+  echo "Slack is already installed"
+else
+  git clone https://aur.archlinux.org/slack-desktop.git /home/$user/slack-desktop
+  cd /home/$user/slack-desktop
+  makepkg -si --noconfirm
+  cd /home/$user/
+  rm -rf /home/$user/slack-desktop
+fi
+
 # rxvt-unicode-pixbuf Install
 if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
   echo "rxvt-unicode-pixbuf is already install"
