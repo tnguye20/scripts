@@ -214,7 +214,7 @@ sh ~/scripts/randomWallpaper
 ranger --copy-config=all
 
 # Set default shell to zsh
-sudo usermod --shell /bin/zsh tnguye20
+sudo usermod --shell /bin/zsh $user
 
 # Restart i3
 i3-msg reload
