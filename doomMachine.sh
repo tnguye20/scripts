@@ -34,9 +34,21 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S gifsicle --noconfirm
 sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
+
+# Install firefox and tridactyl
 sudo pacman -S firefox --noconfirm
+sudo pacman -S firefox-tridactyl --noconfirm
+curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
+
 sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
+
+# Forticlient for work
+cd
+git clone https://aur.archlinux.org/forticlientsslvpn.git
+cd forticlientsslvpn
+makepkg -si --noconfirm
+rm -rf forticlientsslvpn
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
@@ -62,13 +74,14 @@ fi
 git config --global 'user.name' 'Thang Nguyen'
 git config --global 'user.email' 'tnguye20@uvm.edu'
 
+cd /home/$user
 mdkir -p ~/lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
 sh install.sh
 git lfs install
-cd ~
+cd /home/$user
 rm -rf lfs
 
 # Get BumbleBee Status for i3Status
