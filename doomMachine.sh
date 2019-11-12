@@ -34,7 +34,12 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S gifsicle --noconfirm
 sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
+
+# Install firefox and tridactyl
 sudo pacman -S firefox --noconfirm
+sudo pacman -S firefox-tridactyl --noconfirm
+curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
+
 sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
 
