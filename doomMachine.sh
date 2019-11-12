@@ -176,6 +176,7 @@ else
 fi
 ln -s -f /home/$user/.dotfiles/.vimrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.zshrc /home/$user/
+ln -s -f /home/$user/.dotfiles/.tridactylrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
 ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
