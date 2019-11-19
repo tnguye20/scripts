@@ -53,16 +53,16 @@ rm -rf forticlientsslvpn
 # Music Tool
 sudo pacman -S cmus --noconfirm
 sudo pacman -S mpd ncmpcpp mpc --noconfirm
-mkdir -p ~/.config/mpd/
-mkdir ~/.config/mpd/playlists
+mkdir -p /home/$user/.config/mpd/
+mkdir /home/$user/.config/mpd/playlists
 
 # Calendar Tool
 sudo pacman -S calcurse --noconfirm
 
 #Screenshot Tool
 sudo pacman -S flameshot --noconfirm
-if [ ! -d ~/Pictures/Screenshots ]; then
-  mkdir -p ~/Pictures/Screenshots
+if [ ! -d /home/$user/Pictures/Screenshots ]; then
+  mkdir -p /home/$user/Pictures/Screenshots
 fi
 
 # Install Git, Git lfs and basic config vars
@@ -75,7 +75,7 @@ git config --global 'user.name' 'Thang Nguyen'
 git config --global 'user.email' 'tnguye20@uvm.edu'
 
 cd /home/$user
-mdkir -p ~/lfs
+mdkir -p /home/$user/lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
@@ -85,7 +85,7 @@ cd /home/$user
 rm -rf lfs
 
 # Get BumbleBee Status for i3Status
-[ ! -d ~/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
+[ ! -d /home/$user/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
 
 # Install meld and diff/merge tool
 if pacman -Qi meld > /dev/null; then
@@ -204,13 +204,13 @@ ln -s -f /home/$user/.dotfiles/.tridactylrc /home/$user/
 ln -s -f /home/$user/.dotfiles/.tmux.conf.local /home/$user/
 ln -s -f /home/$user/.dotfiles/.i3/config /home/$user/.i3/
 ln -s -f /home/$user/.dotfiles/.config/mpd/mpd.conf /home/$user/.config/mpd/
-ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf ~/.config/ranger/
-ln -s -f /home/$user/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/
-ln -s -f /home/$user/.dotfiles/.calcurse/conf ~/.calcurse/
-ln -s -f /home/$user/.dotfiles/.Xresources ~/.Xresources
-ln -s -f /home/$user/.dotfiles/.gitconfig ~/.gitconfig
-ln -s -f /home/$user/.dotfiles/.profile ~/.profile
-ln -s -f /home/$user/.dotfiles/.cool-retro-term ~/cool-retro-term
+ln -s -f /home/$user/.dotfiles/.config/ranger/rc.conf /home/$user/.config/ranger/
+ln -s -f /home/$user/.dotfiles/.config/neofetch/config.conf /home/$user/.config/neofetch/
+ln -s -f /home/$user/.dotfiles/.calcurse/conf /home/$user/.calcurse/
+ln -s -f /home/$user/.dotfiles/.Xresources /home/$user/.Xresources
+ln -s -f /home/$user/.dotfiles/.gitconfig /home/$user/.gitconfig
+ln -s -f /home/$user/.dotfiles/.profile /home/$user/.profile
+ln -s -f /home/$user/.dotfiles/.cool-retro-term /home/$user/cool-retro-term
 
 # VIM plug
 curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -233,7 +233,7 @@ sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
 # feh --bg-scale /home/$user/.dotfiles/.wallpaper/pink_mountain.jpg
-sh ~/scripts/randomWallpaper
+sh /home/$user/scripts/randomWallpaper
 
 # Set ranger config
 ranger --copy-config=all
