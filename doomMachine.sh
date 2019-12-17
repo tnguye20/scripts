@@ -34,6 +34,9 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S gifsicle --noconfirm
 sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
+sudo pacman -S ripgrep --noconfirm
+sudo pacman -S poppler --noconfirm
+mkdir -p /home/$user/packages
 
 # Install firefox and tridactyl
 sudo pacman -S firefox --noconfirm
@@ -44,11 +47,10 @@ sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
 
 # Forticlient for work
-cd
+cd /home/$user/packages
 git clone https://aur.archlinux.org/forticlientsslvpn.git
 cd forticlientsslvpn
 makepkg -si --noconfirm
-rm -rf forticlientsslvpn
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
@@ -74,15 +76,14 @@ fi
 git config --global 'user.name' 'Thang Nguyen'
 git config --global 'user.email' 'tnguye20@uvm.edu'
 
-cd /home/$user
-mdkir -p /home/$user/lfs
+cd /home/$user/packages
+mdkir -p lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
 sh install.sh
 git lfs install
 cd /home/$user
-rm -rf lfs
 
 # Get BumbleBee Status for i3Status
 [ ! -d /home/$user/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
@@ -120,33 +121,33 @@ fi
 if pacman -Qi fpp > /dev/null; then
   echo "fpp is already installed"
 else
+  cd /home/$user/packages
   git clone https://aur.archlinux.org/fpp-git.git /home/$user/fpp-git
-  cd /home/$user/fpp-git
+  cd fpp-git
   makepkg -si --noconfirm
   cd /home/$user/
-  rm -rf /home/$user/fpp-git
 fi
 
 # Slack Install
 if pacman -Qi slack-desktop > /dev/null; then
   echo "Slack is already installed"
 else
+  cd /home/$user/packages
   git clone https://aur.archlinux.org/slack-desktop.git /home/$user/slack-desktop
-  cd /home/$user/slack-desktop
+  cd slack-desktop
   makepkg -si --noconfirm
   cd /home/$user/
-  rm -rf /home/$user/slack-desktop
 fi
 
 # rxvt-unicode-pixbuf Install
 if pacman -Qi rxvt-unicode-pixbuf > /dev/null; then
   echo "rxvt-unicode-pixbuf is already install"
 else
+  cd /home/$user/packages
   git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
-  cd /home/$user/rxvt-unicode-pixbuf
+  cd rxvt-unicode-pixbuf
   makepkg -si --noconfirm
   cd /home/$user/
-  rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
 
 # Tmux and oh-my-tmux
@@ -177,8 +178,9 @@ else
 fi
 
 # Install st - the suckless terminal for VIM colors mostly
-git clone https://github.com/tnguye20/st.git /home/$user/st
-cd /home/$user/st
+cd /home/$user/packages
+git clone https://github.com/tnguye20/st.git
+cd st
 make
 sudo make install
 cd
