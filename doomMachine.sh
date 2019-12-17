@@ -51,6 +51,7 @@ cd /home/$user/packages
 git clone https://aur.archlinux.org/forticlientsslvpn.git
 cd forticlientsslvpn
 makepkg -si --noconfirm
+rm -rf forticlientsslvpn
 
 # Music Tool
 sudo pacman -S cmus --noconfirm
@@ -84,6 +85,7 @@ tar -xzvf lfs.tar.gz
 sh install.sh
 git lfs install
 cd /home/$user
+rm -rf lfs
 
 # Get BumbleBee Status for i3Status
 [ ! -d /home/$user/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$user/bumblebee-status
@@ -126,6 +128,7 @@ else
   cd fpp-git
   makepkg -si --noconfirm
   cd /home/$user/
+  rm -rf /home/$user/fpp-git
 fi
 
 # Slack Install
@@ -137,6 +140,7 @@ else
   cd slack-desktop
   makepkg -si --noconfirm
   cd /home/$user/
+  rm -rf /home/$user/slack-desktop
 fi
 
 # rxvt-unicode-pixbuf Install
@@ -148,6 +152,7 @@ else
   cd rxvt-unicode-pixbuf
   makepkg -si --noconfirm
   cd /home/$user/
+  rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
 
 # Tmux and oh-my-tmux
@@ -178,9 +183,8 @@ else
 fi
 
 # Install st - the suckless terminal for VIM colors mostly
-cd /home/$user/packages
-git clone https://github.com/tnguye20/st.git
-cd st
+git clone https://github.com/tnguye20/st.git /home/$user/st
+cd /home/$user/st
 make
 sudo make install
 cd
