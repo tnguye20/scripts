@@ -46,6 +46,12 @@ curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/i
 sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
 
+# Iosevka Font since Edwin is such a hacker
+cd /home/$user/packages
+git clone https://aur.archlinux.org/ttf-iosevka.git
+cd ttf-iosevka
+makepkg -si --noconfirm
+
 # Forticlient for work
 cd /home/$user/packages
 git clone https://aur.archlinux.org/forticlientsslvpn.git
