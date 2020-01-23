@@ -46,6 +46,12 @@ curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/i
 sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
 
+# Iosevka Font since Edwin is such a hacker
+cd /home/$user/packages
+git clone https://aur.archlinux.org/ttf-iosevka.git
+cd ttf-iosevka
+makepkg -si --noconfirm
+
 # Forticlient for work
 cd /home/$user/packages
 git clone https://aur.archlinux.org/forticlientsslvpn.git
@@ -78,7 +84,7 @@ git config --global 'user.name' 'Thang Nguyen'
 git config --global 'user.email' 'tnguye20@uvm.edu'
 
 cd /home/$user/packages
-mdkir -p lfs
+mkdir -p lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
