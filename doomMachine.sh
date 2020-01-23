@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-if [ "$1" == "" ]; then
+if [ $# -ne 1 ]; then
   echo "Pleass enter username!!!"
   exit 1
 fi
@@ -51,6 +51,7 @@ cd /home/$user/packages
 git clone https://aur.archlinux.org/ttf-iosevka.git
 cd ttf-iosevka
 makepkg -si --noconfirm
+sudo fc-cache
 
 # Forticlient for work
 cd /home/$user/packages
