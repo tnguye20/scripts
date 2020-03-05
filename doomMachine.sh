@@ -21,8 +21,8 @@ sudo su - root -c  "echo \"$user     ALL=(ALL) NOPASSWD:ALL \" >> /etc/sudoers "
 
 cd /home/$user
 
-# Update packages and install random things that I like
 sudo pacman -Syu --noconfirm
+# Update packages and install random things that I like
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
@@ -36,15 +36,23 @@ sudo pacman -S cool-retro-term --noconfirm
 sudo pacman -S lxappearance --noconfirm
 sudo pacman -S ripgrep --noconfirm
 sudo pacman -S poppler --noconfirm
-mkdir -p /home/$user/packages
-
-# Install firefox and tridactyl
-sudo pacman -S firefox --noconfirm
-sudo pacman -S firefox-tridactyl --noconfirm
-curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
-
 sudo pacman -S npm --noconfirm
 sudo pacman -S nodejs --noconfirm
+sudo pacman -S firefox --noconfirm
+sudo pacman -S firefox-tridactyl --noconfirm
+sudo pacman -S docker --noconfirm
+sudo pacman -S cmus --noconfirm
+sudo pacman -S mpd ncmpcpp mpc --noconfirm
+sudo pacman -S calcurse --noconfirm
+sudo pacman -S flameshot --noconfirm
+if [ ! -d /home/$user/Pictures/Screenshots ]; then
+  mkdir -p /home/$user/Pictures/Screenshots
+fi
+
+mkdir -p /home/$user/packages
+
+# Init tridactyl
+curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
 # Iosevka Font since Edwin is such a hacker
 cd /home/$user/packages
@@ -61,19 +69,8 @@ makepkg -si --noconfirm
 rm -rf forticlientsslvpn
 
 # Music Tool
-sudo pacman -S cmus --noconfirm
-sudo pacman -S mpd ncmpcpp mpc --noconfirm
 mkdir -p /home/$user/.config/mpd/
 mkdir /home/$user/.config/mpd/playlists
-
-# Calendar Tool
-sudo pacman -S calcurse --noconfirm
-
-#Screenshot Tool
-sudo pacman -S flameshot --noconfirm
-if [ ! -d /home/$user/Pictures/Screenshots ]; then
-  mkdir -p /home/$user/Pictures/Screenshots
-fi
 
 # Install Git, Git lfs and basic config vars
 if pacman -Qi git > /dev/null; then
@@ -179,7 +176,7 @@ fi
 if [ -d /home/$user/.oh-my-zsh ]; then
   echo "oh-my-zsh is already installed"
 else
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 # antigen install
