@@ -235,7 +235,7 @@ rm universal-ctags-git
 source /home/$user/.zshrc
 vim +'PlugUpdate' +qa
 vim +'PlugInstall' +qa
-source /home/$user/.vimrc
+vim +'source %' +qa
 
 # Install pywal
 sudo pacman -S python-pip --noconfirm
