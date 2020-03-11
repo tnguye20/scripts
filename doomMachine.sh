@@ -23,6 +23,11 @@ cd /home/$user
 
 sudo pacman -Syu --noconfirm
 # Update packages and install random things that I like
+sudo pacman -S base-devel --noconfirm
+sudo pacman -S make --noconfirm
+sudo pacman -S zsh --noconfirm
+sudo pacman -S sudo --noconfirm
+sudo pacman -S ranger --noconfirm
 sudo pacman -S bat --noconfirm
 sudo pacman -S terminology --noconfirm
 sudo pacman -S gvim --noconfirm
@@ -86,7 +91,7 @@ mkdir -p lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
-sh install.sh
+sudo sh install.sh
 git lfs install
 cd /home/$user
 rm -rf lfs
@@ -233,6 +238,9 @@ cd
 rm universal-ctags-git
 
 source /home/$user/.zshrc
+
+sed -i 's/^colorscheme/\" colorscheme/g' /home/$user/.vimrc
+sed -i 's/\(^Plug.*coc\)/\"\1/g' /home/$user/.vimrc
 vim +'PlugUpdate' +qa
 vim +'PlugInstall' +qa
 vim +'source %' +qa
