@@ -58,14 +58,14 @@ curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/i
 cd /home/$user/packages
 git clone https://aur.archlinux.org/ttf-iosevka.git
 cd ttf-iosevka
-makepkg -si --noconfirm
+makepkg -sicf --noconfirm
 sudo fc-cache
 
 # Forticlient for work
 cd /home/$user/packages
 git clone https://aur.archlinux.org/forticlientsslvpn.git
 cd forticlientsslvpn
-makepkg -si --noconfirm
+makepkg -sicf --noconfirm
 rm -rf forticlientsslvpn
 
 # Music Tool
@@ -130,7 +130,7 @@ else
   cd /home/$user/packages
   git clone https://aur.archlinux.org/fpp-git.git /home/$user/fpp-git
   cd fpp-git
-  makepkg -si --noconfirm
+  makepkg -sicf --noconfirm
   cd /home/$user/
   rm -rf /home/$user/fpp-git
 fi
@@ -142,7 +142,7 @@ else
   cd /home/$user/packages
   git clone https://aur.archlinux.org/slack-desktop.git /home/$user/slack-desktop
   cd slack-desktop
-  makepkg -si --noconfirm
+  makepkg -sicf --noconfirm
   cd /home/$user/
   rm -rf /home/$user/slack-desktop
 fi
@@ -154,7 +154,7 @@ else
   cd /home/$user/packages
   git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git /home/$user/rxvt-unicode-pixbuf
   cd rxvt-unicode-pixbuf
-  makepkg -si --noconfirm
+  makepkg -sicf --noconfirm
   cd /home/$user/
   rm -rf /home/$user/rxvt-unicode-pixbuf
 fi
@@ -228,7 +228,7 @@ curl -fLo /home/$user/.vim/autoload/plug.vim --create-dirs https://raw.githubuse
 # Ctags
 git clone https://aur.archlinux.org/universal-ctags-git.git
 cd universal-ctags-git
-makepkg -si --noconfirm
+makepkg -sicf --noconfirm
 cd
 rm universal-ctags-git
 
