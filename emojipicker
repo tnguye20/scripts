@@ -10,9 +10,9 @@ chosen=$(grep -v "#" $HOME/scripts/emoji | dmenu -b -i -l 20 -fn Iosevka-10)
 [ "$chosen" != "" ] || exit
 
 c=$(echo "$chosen" | sed "s/ .*//")
-echo "$c" | tr -d '\n' | xclip -selection clipboard
+echo "$c" | tr -d '\n' | xclip -selection clipboard && xdotool key ctrl+v
 notify-send "'$c' copied to clipboard." &
 
 # s=$(echo "$chosen" | sed "s/.*; //" | awk '{print $1}')
-# echo "$s" | tr -d '\n' | xclip
+# echo "$s" | tr -d '\n' | xclip && xdotool key ctrl+v
 # notify-send "'$s' copied to primary." &
