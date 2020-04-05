@@ -2,7 +2,10 @@
 
 wallpaper_path=$HOME/.dotfiles/.wallpaper/
 image=$(ls -l $wallpaper_path | sed '1d' | awk '{ print $9 } ' | dmenu -b -l 9)
+imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
+
 
 [[ $image -eq "" ]] && exit
 
 wal -i $wallpaper_path$image
+notify-send -t 1000 "New wallpaper: $image ❤"
