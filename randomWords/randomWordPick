@@ -1,0 +1,118 @@
+#!/bin/python3
+
+import json
+import re
+import random
+from os import system
+
+
+
+class RandomWordPick:
+    def __init__(self, path=""):
+        print("""
+
+            Vocabulary Trainer
+            Press Enter to see definition and next vocabulary
+            Type "clear" to clear screen
+            Type "end" to stop Trainer
+
+        """)
+
+        self.path = "/home/tnguye20/notes/extra_vocab.md" if path == "" else path
+        self.pattern = re.compile(r"__(\w+ \(\w+\))__ - ([\w\s,'-]+)\n([-:',\s\w]+)?$^", re.MULTILINE)
+
+        with open(self.path, "r") as md:
+            data = md.read()
+            data = data.split("---")
+            data = data[1] if len(data) > 1 else data[0]
+            self.data = data
+            self.words = self.pattern.findall(self.data)
+            self.gameStart = True
+            md.close()
+        with open("./learn_cache.json", "r") as learn_cache_json:
+            self.learn_cache = json.load(learn_cache_json)
+            learn_cache_json.close()
+        if len(self.learn_cache.keys()) == 0:
+            print("NO LEARNING IN PROCESS. START NEW SESSION")
+        else:
+            print("LEARNING CACHE FOUND. PLEASE PROCEED")
+        print()
+
+    def delete_learn_cache(self):
+        self.learn_cache = {}
+        self.write_learn_cache(self.learn_cache)
+
+    def write_learn_cache(self, content=""):
+        with open("./learn_cache.json", "w") as learn_cache_json:
+            if content == "":
+                json.dump(self.learn_cache, learn_cache_json, indent=4)
+            else:
+                json.dump(content, learn_cache_json)
+            learn_cache_json.close()
+
+    def update_learn_cache(self, word):
+        if word not in self.learn_cache:
+            self.learn_cache[word] = 0
+        else:
+            self.learn_cache[word]+=1
+
+    def game_clear(self):
+        count = 0
+        for value in self.learn_cache.values():
+            count += int(value)
+        return count == len(self.words) * 2
+
+    def start_game(self):
+        try:
+            while self.gameStart and not self.game_clear():
+                rIndex = random.randint(0, len(self.words) - 1)
+                word = self.words[rIndex][0]
+                extra = ""
+
+                if word in self.learn_cache:
+                    if self.learn_cache[word] == 2:
+                        continue
+
+                if len(self.words[rIndex]) == 3:
+                    extra = self.words[rIndex][2]
+
+                definition = self.words[rIndex][1]
+                value = input("Word: " + word.strip() + "   ")
+                value = value.strip()
+
+                if value == "relearn":
+                    self.delete_learn_cache()
+                    system('clear')
+                    print("RESET LEARNING CACHE")
+                    print()
+                    continue
+                    exit(0)
+                if value == "end":
+                    self.write_learn_cache()
+                    print("TRAINER END")
+                    exit(0)
+                if value == "clear":
+                    system('clear')
+                else:
+                    print("Definition: " + definition.strip())
+                    if extra != "":
+                        print(extra)
+                    else:
+                        print()
+                    print()
+                    if value != "n":
+                        self.update_learn_cache(word)
+                        self.write_learn_cache()
+                    continue
+            self.write_learn_cache()
+            print("YOU HAVE MASTERED ALL THE WORDS. CONGRATULATION!!!")
+            self.delete_learn_cache()
+        except KeyboardInterrupt:
+            self.write_learn_cache()
+            print()
+            print("TRAINER END")
+            exit(0)
+
+if __name__ == "__main__":
+    game = RandomWordPick()
+    game.start_game()
