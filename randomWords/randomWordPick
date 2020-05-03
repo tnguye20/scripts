@@ -3,8 +3,8 @@
 import json
 import re
 import random
-from os import system
-
+from os import system, path
+ospath = path
 
 
 class RandomWordPick:
@@ -15,6 +15,7 @@ class RandomWordPick:
             Press Enter to see definition and next vocabulary
             Type "clear" to clear screen
             Type "end" to stop Trainer
+            Type "relearn" to reset Trainer
 
         """)
 
@@ -29,6 +30,8 @@ class RandomWordPick:
             self.words = self.pattern.findall(self.data)
             self.gameStart = True
             md.close()
+        if not ospath.isfile("./learn_cache.json"):
+            self.write_learn_cache({})
         with open("./learn_cache.json", "r") as learn_cache_json:
             self.learn_cache = json.load(learn_cache_json)
             learn_cache_json.close()
