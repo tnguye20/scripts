@@ -50,7 +50,8 @@ sudo pacman -S cmus --noconfirm
 sudo pacman -S mpd ncmpcpp mpc --noconfirm
 sudo pacman -S calcurse --noconfirm
 sudo pacman -S flameshot --noconfirm
-sudo pacman -S noto-fonts-emoji
+sudo pacman -S noto-fonts-emoji --noconfirm
+sudo pacman -S freerdp remmina --noconfirm
 if [ ! -d /home/$user/Pictures/Screenshots ]; then
   mkdir -p /home/$user/Pictures/Screenshots
 fi
