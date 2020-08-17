@@ -19,7 +19,7 @@ class RandomWordPick:
 
         """)
 
-        self.path = "/home/tnguye20/notes/extra_vocab.md" if path == "" else path
+        self.path = "./extra_vocab.md" if path == "" else path
         self.pattern = re.compile(r"__(\w+ \(\w+\))__ - ([\w\s,'-]+)\n([-:',\s\w]+)?$^", re.MULTILINE)
 
         with open(self.path, "r") as md:
