@@ -10,4 +10,8 @@ image=$(/home/$USER/scripts/randomImageGet)
 
 sudo cp $image /usr/share/backgrounds/lockscreen.png
 
+if [[ "$action" == "reboot" ]] || [[ "$action" == "shutdown" ]]; then
+  rsync -avcXL --progress ~/rsync/ tnguye20@w3.uvm.edu:~/rsync/
+fi
+
 i3exit $action
