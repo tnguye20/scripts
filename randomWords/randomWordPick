@@ -3,12 +3,17 @@
 import json
 import re
 import random
+import os
 from os import system, path
 ospath = path
 
 
 class RandomWordPick:
-    def __init__(self, path=""):
+
+    def __init__(self, _path=""):
+        RSYNC_PATH = os.environ['HOME'] + "/rsync/randomWords/extra_vocab.md"
+        LOCAL_PATH = "./extra_vocab.md"
+
         print("""
 
             Vocabulary Trainer
@@ -19,7 +24,18 @@ class RandomWordPick:
 
         """)
 
-        self.path = "./extra_vocab.md" if path == "" else path
+        if (_path != "" and path.exists(_path)):
+            self.path = _path
+        elif path.exists(RSYNC_PATH):
+            self.path = RSYNC_PATH
+        elif path.exists(LOCAL_PATH):
+            self.path = LOCAL_PATH
+        else:
+            print("Vocabulary List does not exist")
+            exit(1)
+        print("List Path: " + self.path)
+        print("")
+
         self.pattern = re.compile(r"__(\w+ \(\w+\))__ - ([\w\s,'-]+)\n([-:',\s\w]+)?$^", re.MULTILINE)
 
         with open(self.path, "r") as md:

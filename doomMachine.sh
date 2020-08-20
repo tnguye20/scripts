@@ -57,6 +57,7 @@ if [ ! -d /home/$user/Pictures/Screenshots ]; then
 fi
 
 mkdir -p /home/$user/packages
+mkdir -p /home/$user/rsync
 
 # Init tridactyl
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
@@ -266,6 +267,8 @@ i3-msg reload
 
 # Update Permission
 chown -R $user:$user /home/$user/
+
+#rsync -avcXL --delete --progress tnguye20@w3.uvm.edu:~/rsync/ ~/rsync/
 
 # Kick you into ZSH
 zsh
