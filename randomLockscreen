@@ -11,7 +11,13 @@ image=$(/home/$USER/scripts/randomImageGet)
 sudo cp $image /usr/share/backgrounds/lockscreen.png
 
 if [[ "$action" == "reboot" ]] || [[ "$action" == "shutdown" ]]; then
-  rsync -avcXL --delete --progress ~/rsync/ tnguye20@w3.uvm.edu:~/rsync/
+  [[ $(ls ~/rsync | wc -l) -gt 0 ]] && rsync -avcXLu --progress ~/rsync/ tnguye20@w3.uvm.edu:~/rsync/
+  if [[ "$?" == 0 ]]; then
+    notify-send "Rsync Complete"
+  else
+    notify-send "Rsync Failed"
+  fi
+  sleep 1
 fi
 
 i3exit $action
