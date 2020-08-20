@@ -658,3 +658,12 @@ __fervent (adj)__ - great intensity or feelings
   
 __virulence (n)__ - extreme bitterness or malignity in temper
   - Synonyms: rancor
+
+__feckless (adj)__ - irresponsible
+  - Ex: A feckless mama's boy
+
+__levity (n)__ - humor or frivolity, especially the treatment of a serous matter with humor or in a manner lacking due respect
+
+__bonhomie (n)__ - cheerful friendliness, geniality
+
+__flagitious (adj)__ - criminal, villainous
