@@ -59,7 +59,7 @@ class RandomWordPick:
         if len(self.learn_cache.keys()) == 0:
             print("NO LEARNING IN PROCESS. START NEW SESSION")
         else:
-            print("LEARNING CACHE FOUND. PLEASE PROCEED")
+            print("LEARNING CACHE FOUND AT " + self.cache_path + ". PLEASE PROCEED")
         print()
 
     def delete_learn_cache(self):
