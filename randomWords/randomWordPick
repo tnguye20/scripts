@@ -13,6 +13,8 @@ class RandomWordPick:
     def __init__(self, _path=""):
         RSYNC_PATH = os.environ['HOME'] + "/rsync/randomWords/extra_vocab.md"
         LOCAL_PATH = "./extra_vocab.md"
+        CACHE_PATH = os.environ['HOME'] + "/rsync/randomWords/learn_cache.json"
+        LOCAL_CACHE_PATH = "./learn_cache.json"
 
         print("""
 
@@ -46,9 +48,12 @@ class RandomWordPick:
             self.words = self.pattern.findall(self.data)
             self.gameStart = True
             md.close()
-        if not ospath.isfile("./learn_cache.json"):
+        if not ospath.isfile(LOCAL_CACHE_PATH):
             self.write_learn_cache({})
-        with open("./learn_cache.json", "r") as learn_cache_json:
+
+        self.cache_path = CACHE_PATH if path.exists(CACHE_PATH) else LOCAL_CACHE_PATH
+
+        with open(self.cache_path, "r") as learn_cache_json:
             self.learn_cache = json.load(learn_cache_json)
             learn_cache_json.close()
         if len(self.learn_cache.keys()) == 0:
@@ -62,7 +67,7 @@ class RandomWordPick:
         self.write_learn_cache(self.learn_cache)
 
     def write_learn_cache(self, content=""):
-        with open("./learn_cache.json", "w") as learn_cache_json:
+        with open(self.cache_path, "w") as learn_cache_json:
             if content == "":
                 json.dump(self.learn_cache, learn_cache_json, indent=4)
             else:

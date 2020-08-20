@@ -7,7 +7,7 @@ tifigPath=$packagesPath/tifig
 if [[ ! -d $tifigPath ]]; then
   echo "tifig not found. Cloning and installing dependencies"
   cd $packagesPath
-  sudo pacman -S libvips --noconfirm
+  sudo pacman -S libvips cmake --noconfirm
   git clone --recursive https://github.com/monostream/tifig.git tifig
   cd $tifigPath
   mkdir build && cd build
@@ -27,6 +27,7 @@ if [[ "$1" == "-h" ]]; then
   echo "HEIC TO JPEG CONVERSION PROGRAM"
   echo "First arg is the path with HEIC images"
   echo "Second arg is the path for the converted images"
+  exit 0
 elif [[ -d "$1" ]]; then
   [[ ! -d "$2" ]] && mkdir "$2"
   images=$(find $1 -iname "*.heic")
