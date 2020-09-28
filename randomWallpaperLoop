@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [[ $# -gt 1 ]]; then
+  echo "Script Only accept 1 variable"
+  exit 1
+fi
+
+arg=$1
+
+case $arg in
+  "-h")
+    echo "Accept a number to indicate time loop in second. Default is 5 seconds"
+    exit 0
+    ;;
+  *)
+    ;;
+esac
+
+if [[ $# == 0 ]]; then
+  time=5
+  echo "Please"
+else
+  isNum=$(echo "$arg" | grep -Po "^[\d]+$" | wc -l)
+  if [[ "$isNum" == 0 ]]; then
+    echo "Invalid seconds number";
+    exit 1
+  else:
+    echo "Please";
+    time=$arg
+    echo $arg
+    echo $time
+  fi
+fi
+
+# while [[ 1 ==  1 ]]; do
+#   sh $HOME/scripts/randomWallpaper > /dev/null 2> /dev/null
+#   sleep $arg
+# done

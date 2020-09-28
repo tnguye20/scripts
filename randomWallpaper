@@ -5,4 +5,5 @@ imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
 
 wal -i $image
 
-notify-send -t 1000 "New wallpaper: $imageName ❤"
+notify-send -t 5000 "New wallpaper: $imageName ❤"
+echo "$image" | xclip -sel clip
