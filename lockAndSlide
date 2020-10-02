@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./startRandomWallpaperLoop 5; sleep 1; xtrlock
