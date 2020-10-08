@@ -1,0 +1,9 @@
+#!/bin/bash
+
+script=$(ls -l ~/scripts | awk '{print $9}'| sed '1d' | dmenu -b)
+
+[[ $script -eq "" ]] && exit 1
+
+echo $script
+
+sh "$~/scripts/$script"

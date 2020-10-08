@@ -1,4 +1,7 @@
 #!/bin/bash
 
-ps -ef | grep randomWallpaperLoop | head -1 | awk '{print $2}' | xargs -I {} kill -9 {} & >/dev/null 2>&1
-nohup $( ./randomWallpaperLoop $1 ) & >/dev/null 2>&1
+process=$(ps -ef | grep randomWallpaperLoop | grep -v "grep" | head -1 | awk '{print $2}')
+echo $process
+[[ "$process" -ne "" ]] && kill -9 "$process"
+
+nohup $( /home/$USER/scripts//randomWallpaperLoop $1 ) &! >/dev/null 2>&1
