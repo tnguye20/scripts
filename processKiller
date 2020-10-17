@@ -1,0 +1,9 @@
+#!/bin/bash
+
+process=$(ps -ef | sed '1d' | tr -s "\s+" " " | dmenu | awk '{print $2}')
+
+[[ $process -eq "" ]] && exit 1
+
+echo $process
+
+kill -9 "$process"
