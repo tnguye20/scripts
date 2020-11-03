@@ -1,4 +1,11 @@
 #/bin/sh
+#
+if [[ "$1" == "-h" ]]; then
+  echo "HEIC TO JPEG CONVERSION PROGRAM"
+  echo "First arg is the path with HEIC images"
+  echo "Second arg is the path for the converted images"
+  exit 0
+fi
 
 packagesPath=$HOME/packages
 [[ ! -d $packagesPath ]] && mkdir $packagesPath
@@ -18,29 +25,31 @@ if [[ ! -d $tifigPath ]]; then
   sudo cp $tifigPath/build/tifig /usr/local/bin/
 fi
 
-if [[ $# -gt 2 ]]; then
+if [[ $# -gt 2 ]] || [[ $# -eq 0 ]]; then
   echo "Error. Use -h for guidance"
   exit 2
 fi
 
-if [[ "$1" == "-h" ]]; then
-  echo "HEIC TO JPEG CONVERSION PROGRAM"
-  echo "First arg is the path with HEIC images"
-  echo "Second arg is the path for the converted images"
-  exit 0
-elif [[ -d "$1" ]]; then
-  [[ ! -d "$2" ]] && mkdir "$2"
-  images=$(find $1 -iname "*.heic")
+if [[ -d "$1" ]]; then
+  source=$1
+  destination=$2
+  [[ $# -eq 1 ]] && destination=$source
+  [[ ! -d "$destination" ]] && mkdir $destination
+  images=$(find $source -iname "*.heic")
   for image in $images
   do
      convertedName=${image##*/}
      convertedName=${convertedName/HEIC/JPEG}
      convertedName=${convertedName/heic/JPEG}
      echo "Converting $image"
-     tifig -v -p $image $2/$convertedName > /dev/null 2> /dev/null &
+     tifig -v -p $image $destination/$convertedName > /dev/null 2> /dev/null &
   done
 
   wait
+
+  # Copy files that are not heic over to converted folder
+  # [[ "$source" != "$destination" ]] && find $source -type f -not -iname "*.heic" | xargs -I {} sh -c "cp -r {} $destination; echo 'Copy {} to $destination'"
+
   echo "Conversion Completed"
   exit 0
 else

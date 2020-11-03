@@ -54,6 +54,7 @@ sudo pacman -S noto-fonts-emoji --noconfirm
 sudo pacman -S freerdp remmina --noconfirm
 sudo pacman -S xtrlock --noconfirm
 sudo pacman -S xcompmgr --noconfirm
+sudo pacman -S ifuse --noconfirm
 if [ ! -d /home/$user/Pictures/Screenshots ]; then
   mkdir -p /home/$user/Pictures/Screenshots
 fi
