@@ -1,0 +1,38 @@
+#!/bin/sh
+
+if [[ "$1" == "-h" ]]; then
+  echo "VIDEO TO MP4 CONVERSION PROGRAM"
+  echo "First arg is the path with videos"
+  echo "Second arg is the path for the converted MP4"
+  exit 0
+fi
+
+if [[ $# -gt 2 ]] || [[ $# -eq 0 ]]; then
+  echo "Error. Use -h for guidance"
+  exit 2
+fi
+
+if [[ -d "$1" ]]; then
+  source=$1
+  destination=$2
+  [[ $# -eq 1 ]] && destination=$source
+  [[ ! -d "$destination" ]] && mkdir $destination
+  videos=$(find $source -iname "*.mov")
+  for video in $videos
+  do
+     convertedName=${video##*/}
+     convertedName=${convertedName/MOV/MP4}
+     convertedName=${convertedName/mov/MP4}
+     echo "Converting $video"
+     ffmpeg -i $video $destination/$convertedName > /dev/null 2> /dev/null &
+  done
+
+  wait
+
+  echo "Conversion Completed"
+  exit 0
+else
+  echo "$1 is not a valid directory"
+  exit 3
+fi
+
