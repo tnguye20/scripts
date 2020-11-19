@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sh /home/$USER/scripts/startRandomWallpaperLoop; sleep 1; xtrlock;
+sh /home/$USER/scripts/startRandomWallpaperLoop; sleep 1; xtrlock; ps -ef | grep -i "randomwallpaperloop" | grep -v "grep" | head -1 | awk '{print $2}' | xargs -I {} kill -9 {}
+

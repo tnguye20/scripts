@@ -48,10 +48,12 @@ class RandomWordPick:
             self.words = self.pattern.findall(self.data)
             self.gameStart = True
             md.close()
+
+        self.cache_path = CACHE_PATH if path.exists(CACHE_PATH) else LOCAL_CACHE_PATH
+
         if not ospath.isfile(LOCAL_CACHE_PATH):
             self.write_learn_cache({})
 
-        self.cache_path = CACHE_PATH if path.exists(CACHE_PATH) else LOCAL_CACHE_PATH
 
         with open(self.cache_path, "r") as learn_cache_json:
             self.learn_cache = json.load(learn_cache_json)
