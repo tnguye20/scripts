@@ -5,7 +5,7 @@
 # Must have xclip installed to even show menu.
 pacman -Qi xclip >/dev/null || exit
 
-chosen=$(grep -v "#" $HOME/scripts/emoji | dmenu -i -l 5 -fn Iosevka-10)
+chosen=$(grep -v "#" $HOME/scripts/emoji | dmenu -i -l 5 -fn IosevkaLight-12)
 
 [ "$chosen" != "" ] || exit
 

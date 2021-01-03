@@ -9,7 +9,8 @@ instantDate() {
     # remove trailing whitespace characters
     var="${var%"${var##*[![:space:]]}"}"
     echo $var
-    echo $var | xclip -selection clipboard && xdotool key ctrl+v
+    echo $var | xclip -selection clipboard
+    xdotool key ctrl+v
 }
 
 instantDate $(date +"%m/%d/%Y")
