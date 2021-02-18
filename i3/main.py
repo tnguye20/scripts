@@ -5,7 +5,6 @@ from i3ipc import Connection
 i3 = Connection()
 
 for leaf in i3.get_tree().scratchpad().leaves():
-    print(leaf.__dict__)
-    # print(leaf.name + ' || ' + leaf.window_class)
+    print(leaf.name + ' || ' + leaf.window_title)
 
-i3.command("""[title='Graduate Program | Department of Computer Science - Mozilla Firefox'] scratchpad show'""")
+i3.command("""[title='Synergy 1 Pro'] scratchpad show'""")

@@ -55,6 +55,8 @@ sudo pacman -S freerdp remmina --noconfirm
 sudo pacman -S xtrlock --noconfirm
 sudo pacman -S xcompmgr --noconfirm
 sudo pacman -S ifuse --noconfirm
+sudo pacman -S synergy --noconfirm
+sudo pacman -S simplescreenrecorder
 if [ ! -d /home/$user/Pictures/Screenshots ]; then
   mkdir -p /home/$user/Pictures/Screenshots
 fi
