@@ -57,6 +57,7 @@ sudo pacman -S xcompmgr --noconfirm
 sudo pacman -S ifuse --noconfirm
 sudo pacman -S synergy --noconfirm
 sudo pacman -S simplescreenrecorder
+sudo pacman -S ttf-fira-code
 if [ ! -d /home/$user/Pictures/Screenshots ]; then
   mkdir -p /home/$user/Pictures/Screenshots
 fi
