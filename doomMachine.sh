@@ -63,6 +63,9 @@ curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/i
 # Install starship
 curl -fsSL https://starship.rs/install.sh | zsh
 
+# Remove i3-gaps
+sudo pacman -Rc i3-gaps
+
 # Music Tool
 mkdir -p /home/$USER/.config/mpd/
 mkdir /home/$USER/.config/mpd/playlists
@@ -100,10 +103,14 @@ git clone https://aur.archlinux.org/postman-bin.git
 git clone https://aur.archlinux.org/zsa-wally.git
 git clone https://aur.archlinux.org/drawio-desktop.git
 git clone https://aur.archlinux.org/alacritty-themes.git
+git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 
 # Reset Fonts
 sudo fc-cache
+
+# Reinstall i3exit
+sudo pacman -S i3exit --noconfirm
 
 cd /home/$USER/
 
