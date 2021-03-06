@@ -60,6 +60,9 @@ sudo pacman -S \
 # Init tridactyl
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
+# Install starship
+curl -fsSL https://starship.rs/install.sh | zsh
+
 # Music Tool
 mkdir -p /home/$USER/.config/mpd/
 mkdir /home/$USER/.config/mpd/playlists
