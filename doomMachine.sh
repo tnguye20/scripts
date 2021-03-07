@@ -43,7 +43,6 @@ sudo pacman -S \
   remmina \
   xtrlock \
   xcompmgr \
-  ifuse \
   synergy \
   simplescreenrecorder \
   ttf-fira-code \
@@ -59,9 +58,6 @@ sudo pacman -S \
 
 # Init tridactyl
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
-
-# Install starship
-curl -fsSL https://starship.rs/install.sh | zsh
 
 # Remove i3-gaps
 sudo pacman -Rc i3-gaps
@@ -90,7 +86,7 @@ cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
 sudo sh install.sh
-git lfs install
+git lfs install --force
 cd /home/$USER/packages
 rm -rf lfs
 
@@ -98,12 +94,14 @@ git clone https://aur.archlinux.org/ttf-iosevka.git
 git clone https://aur.archlinux.org/forticlientsslvpn.git
 git clone https://aur.archlinux.org/fpp-git.git
 git clone https://aur.archlinux.org/slack-desktop.git
-git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
+# git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
 git clone https://aur.archlinux.org/postman-bin.git
 git clone https://aur.archlinux.org/zsa-wally.git
 git clone https://aur.archlinux.org/drawio-desktop.git
 git clone https://aur.archlinux.org/alacritty-themes.git
 git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
+git clone https://aur.archlinux.org/ifuse.git
+git clone https://aur.archlinux.org/starship-bin.git
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 
 # Reset Fonts
@@ -163,7 +161,7 @@ if [ -d /home/$USER/.dotfiles ]; then
   git fetch
   git pull origin $dotBranch
 else
-  git lfs install
+  git lfs install --force
   git clone https://github.com/tnguye20/.dotfiles.git /home/$USER/.dotfiles
   git clone https://github.com/tnguye20/scripts.git /home/$USER/scripts
   cd /home/$USER/.dotfiles
@@ -229,6 +227,7 @@ chown -R $USER:$USER /home/$USER/
 # Kick you into ZSH
 zsh
 
-if [ -f "/home/$USER/doomMachine.sh" ];then
-  rm -rf "/home/$USER/doomMachine.sh"
-fi
+# Boot into starship
+eval "$(starship init zsh)"
+
+[ -f "/home/$USER/doomMachine.sh" ] && rm -rf "/home/$USER/doomMachine.sh"
