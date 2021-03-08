@@ -54,6 +54,8 @@ sudo pacman -S \
   discord \
   dbeaver \
   tmux \
+  polybar
+  plasma-browser-integration \
   --noconfirm
 
 # Init tridactyl
@@ -77,6 +79,8 @@ fi
 
 # Rsync directory
 mkdir -p /home/$USER/rsync
+# Polybar directory
+mkdir -p /home/$USER/.config/polybar
 
 # Clone packages and install them all
 mkdir -p /home/$USER/packages
@@ -103,6 +107,11 @@ git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/starship-bin.git
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
+
+# Clone packages that does not require makepkg
+## Music control for polybar
+pip3 install pydbus
+git clone https://github.com/tnguye20/polybar-browsermediacontrol.git
 
 # Reset Fonts
 sudo fc-cache
@@ -183,6 +192,7 @@ ln -s -f /home/$USER/.dotfiles/.Xresources /home/$USER/.Xresources
 ln -s -f /home/$USER/.dotfiles/.gitconfig /home/$USER/.gitconfig
 ln -s -f /home/$USER/.dotfiles/.profile /home/$USER/.profile
 ln -s -f /home/$USER/.dotfiles/.cool-retro-term /home/$USER/cool-retro-term
+ln -s -f /home/$USER/.dotfiles/.config/polybar/config /home/$USER/.config/polybar/
 
 # VIM plug
 curl -fLo /home/$USER/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
