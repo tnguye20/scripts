@@ -1,0 +1,12 @@
+#!/bin/bash
+
+latestWallpaper=$(cat /tmp/wallpaper_cycle | tail -1)
+
+[[ $latestWallpaper == "" ]] && exit 1
+
+rm -rf $latestWallpaper
+
+notify-send "Delete $latestWallpaper"
+
+# Get a new wallpaper in place
+./randomWallpaper

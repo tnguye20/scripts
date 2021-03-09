@@ -1,9 +1,5 @@
 #!/bin/bash
 
-script=$(ls -l ~/scripts | awk '{print $9}'| sed '1d' | dmenu -b)
+scripts=$(ls -l $HOME/scripts/ | awk '{print $9}'| sed '1d')
 
-[[ $script -eq "" ]] && exit 1
-
-echo $script
-
-sh "$~/scripts/$script"
+$HOME/scripts/fuzzy "echo \"$scripts\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} sh $HOME/scripts/{}"

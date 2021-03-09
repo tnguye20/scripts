@@ -7,4 +7,4 @@ imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
 feh --bg-fill $image
 
 notify-send -t 5000 "New wallpaper: $imageName ❤"
-echo "$image" | xclip -sel clip
+echo "$image" >> /tmp/wallpaper_cycle

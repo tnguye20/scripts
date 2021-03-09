@@ -1,14 +1,9 @@
 #!/bin/bash
 
 wallpaper_path=$HOME/.dotfiles/.wallpaper/
-image=$(ls -tl $wallpaper_path | sed '1d' | awk '{ print $9 } ' | dmenu -b -l 9)
-imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
-
-
-[[ $image -eq "" ]] && exit
+images=$(ls -tl $wallpaper_path | sed '1d' | awk '{ print $9 } ')
 
 # wal -i $wallpaper_path$image
-feh --bg-fill $wallpaper_path$image
+# feh --bg-fill $wallpaper_path$image
 
-notify-send -t 5000 "New wallpaper: $image ❤"
-echo "$wallpaper_path$image" | xclip -sel clip
+/home/$USER/scripts/fuzzy "echo \"$images\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} sh -c \"feh --bg-fill $wallpaper_path{};echo $wallpaper_path{} >> /tmp/wallpaper_cycle; notify-send 'New wallpaper: {} ❤ '\" "

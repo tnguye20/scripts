@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 repoPath=$HOME/repo/
-repo=$(ls -l $repoPath | sed '1d' | awk '{ print $9 } ' | dmenu -l 9)
-[[ -z $repo ]] && exit 1
+repos=$(ls -l $repoPath | sed '1d' | awk '{ print $9 } ')
 
-code "$repoPath$repo"
+/home/$USER/scripts/fuzzy "echo \"$repos\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} code \"$repoPath{}\""

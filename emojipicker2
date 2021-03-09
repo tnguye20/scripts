@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# [ $# -ne 1 ] && exit 1
+
+# xdotool search --onlyvisible --classname AlacrittyFuzzy windowunmap \
+#   || xdotool search --classname AlacrittyFuzzy windowmap \
+#   || alacritty --class AlacrittyFuzzy -e sh -c '$1'
+
+emoji="$(grep -v "#" $HOME/scripts/emoji)"
+current_window=$(xdotool getactivewindow)
+
+/home/$USER/scripts/fuzzy "echo \"$emoji\" | /home/$USER/scripts/fuzzy_filter | sed \"s/ .*//\" | tr -d '\n' | xclip -selection clipboard && xdotool windowactivate $current_window && xdotool key ctrl+v"

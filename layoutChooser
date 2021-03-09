@@ -1,5 +1,7 @@
 #!/bin/bash
 
 layoutpath=$HOME/.screenlayout/
-layout=$(ls -l $layoutpath | sed '1d' | awk '{ print $9 } ' | dmenu -b -l 9)
-sh $layoutpath$layout
+layout="$(ls -l $layoutpath | sed '1d' | awk '{ print $9 } ')"
+
+/home/$USER/scripts/fuzzy "echo \"$layout\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} sh $layoutpath{}"
+

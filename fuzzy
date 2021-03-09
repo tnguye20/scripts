@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# [ $# -ne 1 ] && exit 1
+
+# xdotool search --onlyvisible --classname AlacrittyFuzzy windowunmap \
+#   || xdotool search --classname AlacrittyFuzzy windowmap \
+#   || alacritty --class AlacrittyFuzzy -e sh -c '$1'
+
+xdotool search --onlyvisible --classname AlacrittyFuzzy windowunmap \
+    || xdotool search --classname AlacrittyFuzzy windowmap \
+      || alacritty --class AlacrittyFuzzy -e sh -c "$1"
