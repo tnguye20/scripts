@@ -106,6 +106,7 @@ git clone https://aur.archlinux.org/alacritty-themes.git
 git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/starship-bin.git
+git clone https://aur.archlinux.org/nerd-fonts-complete.git
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 
 # Clone packages that does not require makepkg
