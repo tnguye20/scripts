@@ -95,6 +95,7 @@ cd /home/$USER/packages
 rm -rf lfs
 
 git clone https://aur.archlinux.org/ttf-iosevka.git
+git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
 git clone https://aur.archlinux.org/forticlientsslvpn.git
 git clone https://aur.archlinux.org/fpp-git.git
 git clone https://aur.archlinux.org/slack-desktop.git
@@ -107,6 +108,7 @@ git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
+git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 
 # Clone packages that does not require makepkg

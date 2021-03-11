@@ -8,5 +8,11 @@
 
 emoji="$(grep -v "#" $HOME/scripts/emoji)"
 current_window=$(xdotool getactivewindow)
+focus_window=$(xdotool getwindowfocus)
 
-/home/$USER/scripts/fuzzy "echo \"$emoji\" | /home/$USER/scripts/fuzzy_filter | sed \"s/ .*//\" | tr -d '\n' | xclip -selection clipboard && xdotool windowactivate $current_window && xdotool key ctrl+v"
+if [ $current_window == $focus_window ]; then
+  /home/$USER/scripts/fuzzy "echo \"$emoji\" | /home/$USER/scripts/fuzzy_filter | sed \"s/ .*//\" | tr -d '\n' | xclip -selection clipboard && xdotool windowactivate $current_window && xdotool key ctrl+v"
+else
+  /home/$USER/scripts/fuzzy "echo \"$emoji\" | /home/$USER/scripts/fuzzy_filter | sed \"s/ .*//\" | tr -d '\n' | xclip -selection clipboard && xdotool windowactivate $current_window && xdotool key ctrl+v && xdotool windowactivate $focus_window && xdotool key ctrl+v"
+fi
+
