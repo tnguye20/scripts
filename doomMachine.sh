@@ -54,7 +54,8 @@ sudo pacman -S \
   discord \
   dbeaver \
   tmux \
-  polybar
+  polybar \
+  youtube-dl \
   plasma-browser-integration \
   --noconfirm
 
@@ -100,6 +101,7 @@ git clone https://aur.archlinux.org/forticlientsslvpn.git
 git clone https://aur.archlinux.org/fpp-git.git
 git clone https://aur.archlinux.org/slack-desktop.git
 # git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
+git clone https://aur.archlinux.org/visual-studio-code-bin.git
 git clone https://aur.archlinux.org/postman-bin.git
 git clone https://aur.archlinux.org/zsa-wally.git
 git clone https://aur.archlinux.org/drawio-desktop.git
