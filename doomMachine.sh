@@ -59,6 +59,9 @@ sudo pacman -S \
   plasma-browser-integration \
   --noconfirm
 
+# Get tridactyl theme
+git clone https://github.com/bezmi/base16-tridactyl.git themes
+
 # Init tridactyl
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
