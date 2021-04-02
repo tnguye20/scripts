@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+  echo 'Wrong number of args'
+fi
+
+image=$1
+imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
+
+if [ ! -f $image ]; then
+  echo 'Not a valid file'
+fi
+
+killall -q animateThatGIF.sh
+
+if [[ "$image" == *"gif"* ]]; then
+  notify-send -t 5000 "Processing $imageName ❤"
+  nohup /home/$USER/scripts/animateThatGIF.sh 0.01 $image &>/dev/null &!
+else
+  feh --bg-fill $image
+fi
+
+notify-send -t 5000 "New wallpaper: $imageName ❤"
+echo "$image" >> /tmp/wallpaper_cycle

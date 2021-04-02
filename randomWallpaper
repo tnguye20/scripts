@@ -1,10 +1,5 @@
 #!/bin/bash
 
 image=$(/home/$USER/scripts/randomImageGet)
-imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
 
-# wal -i $image
-feh --bg-fill $image
-
-notify-send -t 5000 "New wallpaper: $imageName ❤"
-echo "$image" >> /tmp/wallpaper_cycle
+/home/$USER/scripts/changeWallpaper $image
