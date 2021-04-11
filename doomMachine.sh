@@ -66,7 +66,7 @@ git clone https://github.com/bezmi/base16-tridactyl.git themes
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
 # Remove i3-gaps
-sudo pacman -Rc i3-gaps
+sudo pacman -Rc i3-gaps --noconfirm
 
 # Music Tool
 mkdir -p /home/$USER/.config/mpd/
