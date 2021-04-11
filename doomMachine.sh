@@ -202,6 +202,9 @@ ln -s -f /home/$USER/.dotfiles/.profile /home/$USER/.profile
 ln -s -f /home/$USER/.dotfiles/.cool-retro-term /home/$USER/cool-retro-term
 ln -s -f /home/$USER/.dotfiles/.config/polybar/config /home/$USER/.config/polybar/
 
+# Copy first lockscreen to position
+sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
+
 # VIM plug
 curl -fLo /home/$USER/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
