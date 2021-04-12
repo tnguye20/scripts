@@ -8,8 +8,8 @@ cd /home/$USER
 
 # Update packages and install random things that I like
 sudo pacman -Syu --noconfirm
+sudo pacman -R vim --noconfirm
 sudo pacman -S \
-  base-devel \
   make \
   zsh \
   sudo \
@@ -56,6 +56,7 @@ sudo pacman -S \
   tmux \
   polybar \
   youtube-dl \
+  pavucontrol \
   plasma-browser-integration \
   --noconfirm
 
@@ -170,6 +171,9 @@ cd /home/$USER/st
 make
 sudo make install
 cd
+
+# Repo directory
+mkdir -p $HOME/repo
 
 # Config Files and Scripts
 if [ -d /home/$USER/.dotfiles ]; then
