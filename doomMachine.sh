@@ -58,6 +58,8 @@ sudo pacman -S \
   youtube-dl \
   pavucontrol \
   plasma-browser-integration \
+  ctags \
+  pavucontrol \
   --noconfirm
 
 # Get tridactyl theme
@@ -206,18 +208,13 @@ ln -s -f /home/$USER/.dotfiles/.profile /home/$USER/.profile
 ln -s -f /home/$USER/.dotfiles/.cool-retro-term /home/$USER/cool-retro-term
 ln -s -f /home/$USER/.dotfiles/.config/polybar/config /home/$USER/.config/polybar/
 
+cd $HOME/.dotfiles/ && git clean -f
+
 # Copy first lockscreen to position
 sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
 
 # VIM plug
 curl -fLo /home/$USER/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Ctags
-git clone https://aur.archlinux.org/universal-ctags-git.git
-cd universal-ctags-git
-makepkg -sicf --noconfirm
-cd
-rm universal-ctags-git
 
 source /home/$USER/.zshrc
 
