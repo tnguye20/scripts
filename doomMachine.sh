@@ -19,7 +19,7 @@ sudo pacman -S \
   gvim \
   copyq \
   figlet \
-  xorg-server \
+  # xorg-server \
   cmatrix \
   neofetch \
   gifsicle \

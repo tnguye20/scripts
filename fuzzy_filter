@@ -1,2 +1,2 @@
 #!/bin/sh
-fzf --color=bw --margin 1,5% --reverse --border
+fzf --margin 1,5% --reverse --header="FUZZY FINDER" --pointer=*
