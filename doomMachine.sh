@@ -19,14 +19,13 @@ sudo pacman -S \
   gvim \
   copyq \
   figlet \
-  # xorg-server \
+  xorg-server \
   cmatrix \
   neofetch \
   gifsicle \
   cool-retro-term \
   lxappearance \
   ripgrep \
-  poppler \
   npm \
   nodejs \
   firefox \
