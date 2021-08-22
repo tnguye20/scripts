@@ -7,28 +7,28 @@ if [[ "$1" == "-h" ]]; then
   exit 0
 fi
 
-packagesPath=$HOME/packages
-[[ ! -d $packagesPath ]] && mkdir $packagesPath
+# packagesPath=$HOME/packages
+# [[ ! -d $packagesPath ]] && mkdir $packagesPath
 
-tifigPath=$packagesPath/tifig
-if [[ ! -d $tifigPath ]]; then
-  echo "tifig not found. Cloning and installing dependencies"
-  cd $packagesPath
-  sudo pacman -S libvips cmake --noconfirm
-  git clone --recursive https://github.com/monostream/tifig.git tifig
-  cd $tifigPath
-  mkdir build && cd build
-  cmake ..
-  make
-  rc=$?
-  [[ $rc -ne 0 ]] && exit 1
-  sudo cp $tifigPath/build/tifig /usr/local/bin/
-fi
+# tifigPath=$packagesPath/tifig
+# if [[ ! -d $tifigPath ]]; then
+#   echo "tifig not found. Cloning and installing dependencies"
+#   cd $packagesPath
+#   sudo pacman -S libvips cmake --noconfirm
+#   git clone --recursive https://github.com/monostream/tifig.git tifig
+#   cd $tifigPath
+#   mkdir build && cd build
+#   cmake ..
+#   make
+#   rc=$?
+#   [[ $rc -ne 0 ]] && exit 1
+#   sudo cp $tifigPath/build/tifig /usr/local/bin/
+# fi
 
-if [[ $# -gt 2 ]] || [[ $# -eq 0 ]]; then
-  echo "Error. Use -h for guidance"
-  exit 2
-fi
+# if [[ $# -gt 2 ]] || [[ $# -eq 0 ]]; then
+#   echo "Error. Use -h for guidance"
+#   exit 2
+# fi
 
 if [[ -d "$1" ]]; then
   source=$1

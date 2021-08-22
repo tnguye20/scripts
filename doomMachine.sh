@@ -59,6 +59,7 @@ sudo pacman -S \
   plasma-browser-integration \
   ctags \
   pavucontrol \
+  pulseaudio-bluetooth \
   --noconfirm
 
 # Get tridactyl theme

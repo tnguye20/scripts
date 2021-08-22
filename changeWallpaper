@@ -18,6 +18,7 @@ if [[ "$image" == *"gif"* ]]; then
   nohup /home/$USER/scripts/animateThatGIF.sh 0.01 $image &>/dev/null &!
 else
   feh --bg-fill $image
+  # wal -q -i $image
 fi
 
 notify-send -t 5000 "New wallpaper: $imageName ❤"
