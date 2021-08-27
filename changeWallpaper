@@ -14,12 +14,12 @@ fi
 killall -q animateThatGIF.sh
 
 if [[ "$image" == *"gif"* ]]; then
-  notify-send -t 5000 "Processing $imageName ❤"
+  # notify-send -t 5000 "Processing $imageName ❤"
   nohup /home/$USER/scripts/animateThatGIF.sh 0.01 $image &>/dev/null &!
 else
   feh --bg-fill $image
   # wal -q -i $image
 fi
 
-notify-send -t 5000 "New wallpaper: $imageName ❤"
+# notify-send -t 5000 "New wallpaper: $imageName ❤"
 echo "$image" >> /tmp/wallpaper_cycle

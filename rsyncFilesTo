@@ -1,9 +1,9 @@
 #!/bin/bash
 
 [[ $(ls ~/rsync | wc -l) -gt 0 ]] && rsync -avcXLu --progress --delete ~/rsync/ tnguye20@w3.uvm.edu:~/rsync
-if [[ "$?" == 0 ]]; then
-  notify-send "Rsync to w3 completed :3"
-else
-  notify-send "Rsync to w3 failed"
-fi
+# if [[ "$?" == 0 ]]; then
+#   notify-send "Rsync to w3 completed :3"
+# else
+#   notify-send "Rsync to w3 failed"
+# fi
 sleep 1
