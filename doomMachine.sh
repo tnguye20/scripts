@@ -72,33 +72,33 @@ curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/i
 sudo pacman -Rc i3-gaps --noconfirm
 
 # Music Tool
-mkdir -p /home/$USER/.config/mpd/
-mkdir /home/$USER/.config/mpd/playlists
+mkdir -p $HOME/.config/mpd/
+mkdir $HOME/.config/mpd/playlists
 
 # Basic Git config
 git config --global 'user.name' 'Thang Nguyen'
 git config --global 'user.email' 'tnguye20@uvm.edu'
 
 # Screenshots Directory
-if [ ! -d /home/$USER/Pictures/Screenshots ]; then
-  mkdir -p /home/$USER/Pictures/Screenshots
+if [ ! -d $HOME/Pictures/Screenshots ]; then
+  mkdir -p $HOME/Pictures/Screenshots
 fi
 
 # Rsync directory
-mkdir -p /home/$USER/rsync
+mkdir -p $HOME/rsync
 # Polybar directory
-mkdir -p /home/$USER/.config/polybar
+mkdir -p $HOME/.config/polybar
 
 # Clone packages and install them all
-mkdir -p /home/$USER/packages
-cd /home/$USER/packages
+mkdir -p $HOME/packages
+cd $HOME/packages
 mkdir -p lfs
 cd lfs
 curl -L "https://github.com/git-lfs/git-lfs/releases/download/v2.7.2/git-lfs-linux-amd64-v2.7.2.tar.gz" > lfs.tar.gz
 tar -xzvf lfs.tar.gz
 sudo sh install.sh
 git lfs install --force
-cd /home/$USER/packages
+cd $HOME/packages
 rm -rf lfs
 
 git clone https://aur.archlinux.org/ttf-iosevka.git
@@ -130,23 +130,23 @@ sudo fc-cache
 # Reinstall i3exit
 sudo pacman -S i3exit --noconfirm
 
-cd /home/$USER/
+cd $HOME/
 
 # Get BumbleBee Status for i3Status
-[ ! -d /home/$USER/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git /home/$USER/bumblebee-status
+[ ! -d $HOME/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git $HOME/bumblebee-status
 
 # ssh keygen
-if [ -d /home/$USER/.ssh ]; then
+if [ -d $HOME/.ssh ]; then
   echo "SSH Keys exists"
 else
-  ssh-keygen -t rsa -b 4096 -C "tnguye20@uvm.edu" -q -N '' -f /home/$USER/.ssh/id_rsa
+  ssh-keygen -t rsa -b 4096 -C "tnguye20@uvm.edu" -q -N '' -f $HOME/.ssh/id_rsa
   eval "$(ssh-agent -s)"
-  ssh-add /home/$USER/.ssh/id_rsa
-  xclip -sel clip < /home/$USER/.ssh/id_rsa.pub
+  ssh-add $HOME/.ssh/id_rsa
+  xclip -sel clip < $HOME/.ssh/id_rsa.pub
 fi
 
 # oh-my-tmux
-if [ -d /home/$USER/.tmux ]; then
+if [ -d $HOME/.tmux ]; then
   echo "oh-my-tmux is already installed"
 else
   git clone https://github.com/gpakosz/.tmux.git
@@ -154,22 +154,22 @@ else
 fi
 
 # oh-my-zsh
-if [ -d /home/$USER/.oh-my-zsh ]; then
+if [ -d $HOME/.oh-my-zsh ]; then
   echo "oh-my-zsh is already installed"
 else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 # antigen install
-if [ -f /home/$USER/antigen.zsh ]; then
+if [ -f $HOME/antigen.zsh ]; then
   echo "antigen is already installed"
 else
-  curl -L git.io/antigen > /home/$USER/antigen.zsh
+  curl -L git.io/antigen > $HOME/antigen.zsh
 fi
 
 # Install st - the suckless terminal for VIM colors mostly
-git clone https://github.com/tnguye20/st.git /home/$USER/st
-cd /home/$USER/st
+git clone https://github.com/tnguye20/st.git $HOME/st
+cd $HOME/st
 make
 sudo make install
 cd
@@ -178,35 +178,35 @@ cd
 mkdir -p $HOME/repo
 
 # Config Files and Scripts
-if [ -d /home/$USER/.dotfiles ]; then
+if [ -d $HOME/.dotfiles ]; then
   echo ".dotfiles is already cloned"
-  cd /home/$USER/.dotfiles
+  cd $HOME/.dotfiles
   git fetch
   git pull origin $dotBranch
 else
   git lfs install --force
-  git clone https://github.com/tnguye20/.dotfiles.git /home/$USER/.dotfiles
-  git clone https://github.com/tnguye20/scripts.git /home/$USER/scripts
-  cd /home/$USER/.dotfiles
+  git clone https://github.com/tnguye20/.dotfiles.git $HOME/.dotfiles
+  git clone https://github.com/tnguye20/scripts.git $HOME/scripts
+  cd $HOME/.dotfiles
   git lfs install
   git lfs pull
   cd
 fi
-ln -s -f /home/$USER/.dotfiles/.vimrc /home/$USER/
-ln -s -f /home/$USER/.dotfiles/.zshrc /home/$USER/
-ln -s -f /home/$USER/.dotfiles/.tridactylrc /home/$USER/
-ln -s -f /home/$USER/.dotfiles/.tmux.conf.local /home/$USER/
-ln -s -f /home/$USER/.dotfiles/.i3/config /home/$USER/.i3/
-ln -s -f /home/$USER/.dotfiles/.config/mpd/mpd.conf /home/$USER/.config/mpd/
-ln -s -f /home/$USER/.dotfiles/.config/alacritty/ /home/$USER/.config
-ln -s -f /home/$USER/.dotfiles/.config/ranger/rc.conf /home/$USER/.config/ranger/
-ln -s -f /home/$USER/.dotfiles/.config/neofetch/config.conf /home/$USER/.config/neofetch/
-ln -s -f /home/$USER/.dotfiles/.calcurse/conf /home/$USER/.calcurse/
-ln -s -f /home/$USER/.dotfiles/.Xresources /home/$USER/.Xresources
-ln -s -f /home/$USER/.dotfiles/.gitconfig /home/$USER/.gitconfig
-ln -s -f /home/$USER/.dotfiles/.profile /home/$USER/.profile
-ln -s -f /home/$USER/.dotfiles/.cool-retro-term /home/$USER/cool-retro-term
-ln -s -f /home/$USER/.dotfiles/.config/polybar/config /home/$USER/.config/polybar/
+ln -s -f $HOME/.dotfiles/.vimrc $HOME/
+ln -s -f $HOME/.dotfiles/.zshrc $HOME/
+ln -s -f $HOME/.dotfiles/.tridactylrc $HOME/
+ln -s -f $HOME/.dotfiles/.tmux.conf.local $HOME/
+ln -s -f $HOME/.dotfiles/.i3/config $HOME/.i3/
+ln -s -f $HOME/.dotfiles/.config/mpd/mpd.conf $HOME/.config/mpd/
+ln -s -f $HOME/.dotfiles/.config/alacritty/ $HOME/.config
+ln -s -f $HOME/.dotfiles/.config/ranger/rc.conf $HOME/.config/ranger/
+ln -s -f $HOME/.dotfiles/.config/neofetch/config.conf $HOME/.config/neofetch/
+ln -s -f $HOME/.dotfiles/.calcurse/conf $HOME/.calcurse/
+ln -s -f $HOME/.dotfiles/.Xresources $HOME/.Xresources
+ln -s -f $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
+ln -s -f $HOME/.dotfiles/.profile $HOME/.profile
+ln -s -f $HOME/.dotfiles/.cool-retro-term $HOME/cool-retro-term
+ln -s -f $HOME/.dotfiles/.config/polybar/config $HOME/.config/polybar/
 
 cd $HOME/.dotfiles/ && git clean -f
 
@@ -214,12 +214,12 @@ cd $HOME/.dotfiles/ && git clean -f
 sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
 
 # VIM plug
-curl -fLo /home/$USER/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-source /home/$USER/.zshrc
+source $HOME/.zshrc
 
-sed -i 's/^colorscheme/\" colorscheme/g' /home/$USER/.vimrc
-sed -i 's/\(^Plug.*coc\)/\"\1/g' /home/$USER/.vimrc
+sed -i 's/^colorscheme/\" colorscheme/g' $HOME/.vimrc
+sed -i 's/\(^Plug.*coc\)/\"\1/g' $HOME/.vimrc
 vim +'PlugUpdate' +qa
 vim +'PlugInstall' +qa
 vim +'source %' +qa
@@ -229,8 +229,8 @@ sudo pacman -S python-pip --noconfirm
 sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
-# feh --bg-scale /home/$USER/.dotfiles/.wallpaper/pink_mountain.jpg
-sh /home/$USER/scripts/randomWallpaper
+# feh --bg-scale $HOME/.dotfiles/.wallpaper/pink_mountain.jpg
+sh $HOME/scripts/randomWallpaper
 
 # Set ranger config
 ranger --copy-config=all
@@ -242,7 +242,7 @@ sudo usermod --shell /bin/zsh $USER
 i3-msg reload
 
 # Update Permission
-chown -R $USER:$USER /home/$USER/
+chown -R $USER:$USER $HOME/
 
 #rsync -avcXL --delete --progress tnguye20@w3.uvm.edu:~/rsync/ ~/rsync/
 
@@ -252,4 +252,4 @@ zsh
 # Boot into starship
 eval "$(starship init zsh)"
 
-[ -f "/home/$USER/doomMachine.sh" ] && rm -rf "/home/$USER/doomMachine.sh"
+[ -f "$HOME/doomMachine.sh" ] && rm -rf "$HOME/doomMachine.sh"
