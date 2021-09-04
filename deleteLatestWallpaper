@@ -6,7 +6,7 @@ latestWallpaper=$(cat /tmp/wallpaper_cycle | tail -1)
 
 rm -rf $latestWallpaper
 
-# notify-send "Delete $latestWallpaper"
+notify-send "Delete $latestWallpaper"
 
 # Empty log file so no more confusion boi
 : > /tmp/wallpaper_cycle

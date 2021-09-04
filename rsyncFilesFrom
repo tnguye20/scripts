@@ -1,12 +1,12 @@
 #!/bin/bash
 # Rsync files if necessary
 
-# notify-send "Rsync from w3 in progress"
+notify-send "Rsync from w3 in progress"
 sleep 10
 [[ ! -d ~/rsync ]] && mkdir ~/rsync
 rsync -avcXLu --progress --delete tnguye20@w3.uvm.edu:~/rsync/ ~/rsync/
-# if [[ "$?" == 0 ]]; then
-  # notify-send "Rsync from w3 succesfully :3"
-# else
-  # notify-send "Rsync from w3 failed"
-# fi
+if [[ "$?" == 0 ]]; then
+  notify-send "Rsync from w3 succesfully :3"
+else
+  notify-send "Rsync from w3 failed"
+fi
