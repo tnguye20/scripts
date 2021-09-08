@@ -42,6 +42,7 @@ sudo pacman -S \
   remmina \
   xtrlock \
   xcompmgr \
+  neovim \
   synergy \
   simplescreenrecorder \
   ttf-fira-code \
@@ -61,6 +62,10 @@ sudo pacman -S \
   pavucontrol \
   pulseaudio-bluetooth \
   --noconfirm
+
+# Get docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # Get tridactyl theme
 git clone https://github.com/bezmi/base16-tridactyl.git themes
@@ -103,7 +108,6 @@ rm -rf lfs
 
 git clone https://aur.archlinux.org/ttf-iosevka.git
 git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
-git clone https://aur.archlinux.org/forticlientsslvpn.git
 git clone https://aur.archlinux.org/fpp-git.git
 git clone https://aur.archlinux.org/slack-desktop.git
 # git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
@@ -117,6 +121,8 @@ git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
 git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
+git clone https://aur.archlinux.org/neovide-git.git
+
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 
 # Clone packages that does not require makepkg
@@ -207,6 +213,7 @@ ln -s -f $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -s -f $HOME/.dotfiles/.profile $HOME/.profile
 ln -s -f $HOME/.dotfiles/.cool-retro-term $HOME/cool-retro-term
 ln -s -f $HOME/.dotfiles/.config/polybar/config $HOME/.config/polybar/
+ln -s -f $HOME/.dotfiles/.config/nvim/init.vim $HOME/.config/nvim/
 
 cd $HOME/.dotfiles/ && git clean -f
 

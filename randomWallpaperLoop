@@ -11,7 +11,7 @@ timeHandle()
 
   case $t in
     "-h")
-      echo "Accept a number to indicate time loop in second. Default is 5 seconds"
+      echo "Accept a number to indicate time loop in second. Default is 1 minute"
       exit 0
       ;;
     *)
@@ -19,9 +19,9 @@ timeHandle()
   esac
 
 
-  time=5
+  time=60
   if [[ $# == 0 ]]; then
-    time=5
+    time=60
   else
     isNum=$(echo "$t" | grep -Po "^[\d]+$" | wc -l)
     if [[ "$isNum" == 0 ]]; then
