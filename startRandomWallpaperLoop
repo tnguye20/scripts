@@ -4,4 +4,4 @@ process=$(ps -ef | grep randomWallpaperLoop | grep -v "grep" | head -1 | awk '{p
 echo $process
 [[ "$process" -ne "" ]] && kill -9 "$process"
 
-nohup $( /home/$USER/scripts//randomWallpaperLoop $1 ) &! >/dev/null 2>&1
+nohup $( /home/$USER/scripts/randomWallpaperLoop $1 ) &! >/dev/null 2>&1
