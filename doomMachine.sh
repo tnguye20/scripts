@@ -33,6 +33,8 @@ sudo pacman -S \
   docker \
   cmus \
   mpd \
+  zip \
+  unzip \
   ncmpcpp \
   mpc \
   calcurse \
