@@ -60,6 +60,7 @@ sudo pacman -S \
   youtube-dl \
   pavucontrol \
   plasma-browser-integration \
+  pdftk \
   ctags \
   pavucontrol \
   pulseaudio-bluetooth \
