@@ -144,6 +144,9 @@ cd $HOME/
 # Get BumbleBee Status for i3Status
 [ ! -d $HOME/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git $HOME/bumblebee-status
 
+# Get nvm in case I'm still a node.js developer
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
 # ssh keygen
 if [ -d $HOME/.ssh ]; then
   echo "SSH Keys exists"
