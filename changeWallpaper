@@ -17,9 +17,11 @@ if [[ "$image" == *"gif"* ]]; then
   notify-send -t 5000 "Processing $imageName ❤"
   nohup /home/$USER/scripts/animateThatGIF.sh 0.01 $image &>/dev/null &!
 else
-  feh --bg-fill $image
-  # wal -q -i $image
+  # feh --bg-fill $image
+  wal -q -i $image
+  sleep 1
 fi
 
+sh $HOME/scripts/alacritty_wal
 notify-send -t 5000 "New wallpaper: $imageName ❤"
 echo "$image" >> /tmp/wallpaper_cycle
