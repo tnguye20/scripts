@@ -19,7 +19,7 @@ if [[ "$image" == *"gif"* ]]; then
 else
   # feh --bg-fill $image
   wal -q -i $image
-  sleep 1
+  sleep 1.5
 fi
 
 sh $HOME/scripts/alacritty_wal
