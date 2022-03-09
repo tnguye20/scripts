@@ -3,5 +3,5 @@
 layoutpath=$HOME/.screenlayout/
 layout="$(ls -l $layoutpath | sed '1d' | awk '{ print $9 } ')"
 
-/home/$USER/scripts/fuzzy "echo \"$layout\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} sh $layoutpath{}"
+/home/$USER/scripts/fuzzy "echo \"$layout\" | /home/$USER/scripts/fuzzy_filter LAYOUTS | xargs -I {} sh $layoutpath{}"
 
