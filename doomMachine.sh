@@ -64,6 +64,7 @@ sudo pacman -S \
   ctags \
   pavucontrol \
   pulseaudio-bluetooth \
+  picom \
   --noconfirm
 
 # Get docker-compose

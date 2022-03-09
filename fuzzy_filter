@@ -3,12 +3,12 @@
 
 case $# in
   1) header=$1 ;;
-  *) header="DEFAULT LAUCHER"
+  *) header="DEFAULT PICKER" ;;
 esac
 
 fzf \
 --layout=reverse \
---padding=10%
---header=$header \
+--padding=10% \
 --pointer="👉" \
 --prompt="⌨   " \
+--header=$header \
