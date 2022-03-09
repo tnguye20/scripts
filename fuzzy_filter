@@ -1,2 +1,14 @@
 #!/bin/sh
-fzf --margin 1,5% --reverse --header="FUZZY FINDER" --pointer=*
+# Dark
+
+case $# in
+  1) header=$1 ;;
+  *) header="DEFAULT LAUCHER"
+esac
+
+fzf \
+--layout=reverse \
+--padding=10%
+--header=$header \
+--pointer="👉" \
+--prompt="⌨   " \
