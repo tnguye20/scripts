@@ -2,4 +2,4 @@
 
 processes=$(ps -ef | sed '1d' | tr -s " +" " ")
 
-/home/$USER/scripts/fuzzy "echo \"$processes\" | fzf --reverse --border | awk '{print $2}' | xargs -I {} sh -c \" [{} -eq ''] && echo 'No process to kill' && exit 1; kill -9 {}\""
+/home/$USER/scripts/fuzzy "echo \"$processes\" | /home/$USER/scripts/fuzzy_filter PROCESSES | awk '{print $2}' | xargs -I {} sh -c \" [{} -eq ''] && echo 'No process to kill' && exit 1; kill -9 {}\""
