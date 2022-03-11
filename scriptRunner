@@ -2,4 +2,4 @@
 
 scripts=$(ls -l $HOME/scripts/ | awk '{print $9}'| sed '1d')
 
-$HOME/scripts/fuzzy "echo \"$scripts\" | /home/$USER/scripts/fuzzy_filter | xargs -I {} sh $HOME/scripts/{}"
+$HOME/scripts/fuzzy "echo \"$scripts\" | /home/$USER/scripts/fuzzy_filter SCRIPTS | xargs -I {} sh $HOME/scripts/{}"
