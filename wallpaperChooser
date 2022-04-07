@@ -1,7 +1,7 @@
 #!/bin/bash
 
-wallpaper_path=$HOME/.dotfiles/.wallpaper/
-images=$(ls -tl $wallpaper_path | sed '1d' | awk '{ print $9 } ')
+WALL_PATH=$HOME/.dotfiles/.wallpaper/
+images=$(ls "$WALL_PATH" | while read A ; do  echo -en "$A\x00icon\x1f$WALL_PATH/$A\n" ; done)
 
 # wal -i $wallpaper_path$image
 # feh --bg-fill $wallpaper_path$image
@@ -10,6 +10,6 @@ images=$(ls -tl $wallpaper_path | sed '1d' | awk '{ print $9 } ')
 
 # source $HOME/scripts/rofi_env
 # echo "$images" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $wallpaper_path{}"
-echo "$images" | rofi -dmenu | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $wallpaper_path{}"
+ls -t $WALL_PATH | while read A ; do  echo -en "$A\x00icon\x1f$WALL_PATH/$A\n" ; done | rofi -dmenu | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $WALL_PATH{}"
 
 # echo "$images" | rofi -no-lazy-grab -dmenu -theme $dir/"$theme" | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $wallpaper_path{}"
