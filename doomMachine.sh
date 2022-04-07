@@ -229,7 +229,14 @@ ln -s -f $HOME/.dotfiles/.vimrc $HOME/.ideavimrc
 cd $HOME/.dotfiles/ && git clean -f
 
 # Copy first lockscreen to position
-sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
+# sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
+
+# rofi setup
+cd $HOME/packages
+git clone https://github.com/lr-tech/rofi-themes-collection.git
+mkdir -p $HOME/.local/share/rofi/themes
+cp rofi-themes-collection/themes/* $HOME/.local/share/rofi/themes
+cd
 
 # VIM plug
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
