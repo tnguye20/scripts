@@ -5,5 +5,6 @@ layout="$(ls -l $layoutpath | sed '1d' | awk '{ print $9 } ')"
 
 # /home/$USER/scripts/fuzzy "echo \"$layout\" | /home/$USER/scripts/fuzzy_filter LAYOUTS | xargs -I {} sh $layoutpath{}"
 
-source $HOME/scripts/rofi_env
-echo "$layout" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh $layoutpath{}
+# source $HOME/scripts/rofi_env
+# echo "$layout" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh $layoutpath{}
+echo "$layout" | rofi -dmenu | xargs -I {} sh $layoutpath{}

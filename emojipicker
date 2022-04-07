@@ -6,8 +6,9 @@
 pacman -Qi xclip >/dev/null || exit
 
 # chosen=$(grep -v "#" $HOME/scripts/emoji | dmenu -i -l 5 -fn IosevkaLight-12)
-source $HOME/scripts/rofi_env
-chosen=$(grep -v "#" $HOME/scripts/emoji | rofi -dmenu -theme $dir/"$theme")
+# source $HOME/scripts/rofi_env
+# chosen=$(grep -v "#" $HOME/scripts/emoji | rofi -dmenu -theme $dir/"$theme")
+chosen=$(grep -v "#" $HOME/scripts/emoji | rofi -dmenu)
 
 [ "$chosen" != "" ] || exit
 
