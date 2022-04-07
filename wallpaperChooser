@@ -6,4 +6,12 @@ images=$(ls -tl $wallpaper_path | sed '1d' | awk '{ print $9 } ')
 # wal -i $wallpaper_path$image
 # feh --bg-fill $wallpaper_path$image
 
-/home/$USER/scripts/fuzzy "echo \"$images\" | /home/$USER/scripts/fuzzy_filter WALLPAPERS | xargs -I {} sh -c \"/home/$USER/scripts/changeWallpaper $wallpaper_path{} \" "
+# /home/$USER/scripts/fuzzy "echo \"$images\" | /home/$USER/scripts/fuzzy_filter WALLPAPERS | xargs -I {} sh -c \"/home/$USER/scripts/changeWallpaper $wallpaper_path{} \" "
+
+source $HOME/scripts/rofi_env
+echo "$images" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $wallpaper_path{}"
+# theme="style_3"
+# dir="$HOME/.config/rofi/launchers/colorful"
+# styles=($(ls -p --hide="colors.rasi" $dir/styles))
+
+# echo "$images" | rofi -no-lazy-grab -dmenu -theme $dir/"$theme" | xargs -I {} sh -c "$HOME/scripts/changeWallpaper $wallpaper_path{}"

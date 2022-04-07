@@ -1,0 +1,4 @@
+#!/bin/bash
+
+theme="style_3"
+dir="$HOME/.config/rofi/launchers/text"

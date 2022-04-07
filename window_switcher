@@ -1,0 +1,5 @@
+#!/bin/bash
+
+theme="style_7"
+dir="$HOME/.config/rofi/launchers/colorful"
+rofi -show window -theme $dir/"$theme"

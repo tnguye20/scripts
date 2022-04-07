@@ -1,3 +1,11 @@
 #!/bin/sh
 
-/home/$USER/scripts/fuzzy 'compgen -c | grep -iP "^[\w\d- ]+$" | sort -u | /home/$USER/scripts/fuzzy_filter APPLICATIONS | xargs /home/$USER/scripts/lnch'
+# /home/$USER/scripts/fuzzy 'compgen -c | grep -iP "^[\w\d- ]+$" | sort -u | /home/$USER/scripts/fuzzy_filter APPLICATIONS | xargs /home/$USER/scripts/lnch'
+# compgen -c | grep -iP "^[\w\d- ]+$" | sort -u | rofi -dmenu | xargs $HOME/scripts/lnch
+
+# rofi -show run
+source $HOME/scripts/rofi_env
+
+rofi -no-lazy-grab -show run \
+-modi run \
+-theme $dir/"$theme"

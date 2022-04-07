@@ -3,4 +3,7 @@
 repoPath=$HOME/repo/
 repos=$(ls -l $repoPath | sed '1d' | awk '{ print $9 } ')
 
-/home/$USER/scripts/fuzzy "echo \"$repos\" | /home/$USER/scripts/fuzzy_filter REPOSITORIES | xargs -I {} code \"$repoPath{}\""
+# /home/$USER/scripts/fuzzy "echo \"$repos\" | /home/$USER/scripts/fuzzy_filter REPOSITORIES | xargs -I {} code \"$repoPath{}\""
+
+source $HOME/scripts/rofi_env
+echo "$repos" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} code "$repoPath{}"

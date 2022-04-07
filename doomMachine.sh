@@ -65,6 +65,7 @@ sudo pacman -S \
   pavucontrol \
   pulseaudio-bluetooth \
   picom \
+  rofi \
   --noconfirm
 
 # Get docker-compose
