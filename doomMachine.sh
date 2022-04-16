@@ -66,6 +66,7 @@ sudo pacman -S \
   pulseaudio-bluetooth \
   picom \
   rofi \
+  atril \
   --noconfirm
 
 # Get docker-compose
