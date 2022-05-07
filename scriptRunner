@@ -1,10 +1,12 @@
 #!/bin/bash
 
-scripts=$(ls -l $HOME/scripts/ | awk '{print $9}'| sed '1d')
-
+# scripts=$(ls -l $HOME/scripts/ | awk '{print $9}'| sed '1d')
+scriptsPath=$HOME/scripts/
 # $HOME/scripts/fuzzy "echo \"$scripts\" | /home/$USER/scripts/fuzzy_filter SCRIPTS | xargs -I {} sh $HOME/scripts/{}"
 
 # source $HOME/scripts/rofi_env
 # theme="style_1"
 # echo "$scripts" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh $HOME/scripts/{}
-echo "$scripts" | rofi -dmenu | xargs -I {} sh $HOME/scripts/{}
+# echo "$scripts" | rofi -dmenu | xargs -I {} sh $HOME/scripts/{}
+
+ls -t "$scriptsPath" | while read A ; do  echo -en "🐚 $A\n" ; done | rofi -dmenu | grep -iPo "\w+" | xargs -I {} sh "$scriptsPath{}"
