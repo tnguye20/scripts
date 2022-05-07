@@ -6,5 +6,6 @@ repos=$(ls -l $repoPath | sed '1d' | awk '{ print $9 } ')
 # /home/$USER/scripts/fuzzy "echo \"$repos\" | /home/$USER/scripts/fuzzy_filter REPOSITORIES | xargs -I {} code \"$repoPath{}\""
 
 # source $HOME/scripts/rofi_env
-# echo "$repos" | rofi -dmenu -theme $dir/"$theme" | xargs -i {} code "$repopath{}"
-ls -t "$repoPath" | while read A ; do  echo -en "📂 $A\n" ; done | rofi -dmenu
+# echo "$repos" | rofi -dmenu | xargs -I {} code "$repoPath{}"
+# echo "$repos" | rofi -dmenu | xargs -i {} code "$repoPath{}"
+ls -t "$repoPath" | while read A ; do  echo -en "📂 $A\n" ; done | rofi -dmenu | grep -iPo "\w+" | xargs -I {} code "$repoPath"
