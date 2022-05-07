@@ -19,7 +19,7 @@ sudo pacman -S \
   gvim \
   copyq \
   figlet \
-  xorg-server \
+  # xorg-server \
   cmatrix \
   neofetch \
   gifsicle \
@@ -88,7 +88,7 @@ mkdir $HOME/.config/mpd/playlists
 
 # Basic Git config
 git config --global 'user.name' 'Thang Nguyen'
-git config --global 'user.email' 'tnguye20@uvm.edu'
+git config --global 'user.email' 'thangnguyenuvm@gmail.com'
 
 # Screenshots Directory
 if [ ! -d $HOME/Pictures/Screenshots ]; then
@@ -127,9 +127,9 @@ git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
 git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
-git clone https://aur.archlinux.org/neovide-git.git
 
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
+rm -rf packages/*
 
 # Clone packages that does not require makepkg
 ## Music control for polybar
@@ -235,6 +235,12 @@ cd $HOME/.dotfiles/ && git clean -f
 # rofi setup
 cd $HOME/packages
 git clone https://github.com/lr-tech/rofi-themes-collection.git
+
+git clone https://github.com/adi1090x/rofi.git
+cd rofi
+echo "1" | ./setup.sh
+cd ..
+
 mkdir -p $HOME/.local/share/rofi/themes
 cp rofi-themes-collection/themes/* $HOME/.local/share/rofi/themes
 cd
