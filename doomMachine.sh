@@ -8,8 +8,8 @@ cd /home/$USER
 
 # Update packages and install random things that I like
 sudo pacman -Syu --noconfirm
-sudo pacman -R vim --noconfirm
 sudo pacman -S \
+  git \
   make \
   zsh \
   sudo \
@@ -51,7 +51,6 @@ sudo pacman -S \
   meld \
   xclip \
   feh \
-  git \
   discord \
   dbeaver \
   tmux \

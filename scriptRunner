@@ -9,4 +9,4 @@ scriptsPath=$HOME/scripts/
 # echo "$scripts" | rofi -dmenu -theme $dir/"$theme" | xargs -I {} sh $HOME/scripts/{}
 # echo "$scripts" | rofi -dmenu | xargs -I {} sh $HOME/scripts/{}
 
-ls -t "$scriptsPath" | while read A ; do  echo -en "🐚 $A\n" ; done | rofi -dmenu | grep -iPo "\w+" | xargs -I {} sh "$scriptsPath{}"
+ls -t "$scriptsPath" | while read A ; do  echo -en "🐚 $A\n" ; done | rofi -dmenu | grep -iPo "[\w._-]+" | xargs -I {} sh "$scriptsPath{}"
