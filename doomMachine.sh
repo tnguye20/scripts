@@ -222,7 +222,7 @@ ln -s -f $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -s -f $HOME/.dotfiles/.profile $HOME/.profile
 ln -s -f $HOME/.dotfiles/.cool-retro-term $HOME/cool-retro-term
 ln -s -f $HOME/.dotfiles/.config/polybar/config $HOME/.config/polybar/
-ln -s -f $HOME/.dotfiles/.config/nvim/init.vim $HOME/.config/nvim/
+ln -s -f $HOME/.dotfiles/.config/nvim $HOME/.config
 ln -s -f $HOME/.dotfiles/.config/picom.conf $HOME/.config/
 ln -s -f $HOME/.dotfiles/.config/rofi $HOME/.config/rofi
 ln -s -f $HOME/.dotfiles/.vimrc $HOME/.ideavimrc
