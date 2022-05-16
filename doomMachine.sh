@@ -19,7 +19,6 @@ sudo pacman -S \
   terminology \
   gvim \
   copyq \
-  figlet \
   cmatrix \
   neofetch \
   gifsicle \
@@ -56,7 +55,6 @@ sudo pacman -S \
   dbeaver \
   tmux \
   polybar \
-  youtube-dl \
   pavucontrol \
   plasma-browser-integration \
   pdftk \
@@ -79,7 +77,7 @@ git clone https://github.com/bezmi/base16-tridactyl.git themes
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
 # Remove i3-gaps
-sudo pacman -Rc i3-gaps --noconfirm
+#sudo pacman -Rc i3-gaps --noconfirm
 
 # Music Tool
 mkdir -p $HOME/.config/mpd/
@@ -112,8 +110,8 @@ cd $HOME/packages
 rm -rf lfs
 
 git clone https://aur.archlinux.org/ttf-iosevka.git
-git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
-git clone https://aur.archlinux.org/fpp-git.git
+#git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
+#git clone https://aur.archlinux.org/fpp-git.git
 git clone https://aur.archlinux.org/slack-desktop.git
 # git clone https://aur.archlinux.org/rxvt-unicode-pixbuf.git
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
@@ -121,30 +119,33 @@ git clone https://aur.archlinux.org/postman-bin.git
 git clone https://aur.archlinux.org/zsa-wally.git
 git clone https://aur.archlinux.org/drawio-desktop.git
 git clone https://aur.archlinux.org/alacritty-themes.git
-git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
+#git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
-git clone https://aur.archlinux.org/starship-bin.git
+#git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
-git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
+#git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
 
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 rm -rf packages/*
 
+# Install pip
+python -m ensurepip --upgrade
+
 # Clone packages that does not require makepkg
 ## Music control for polybar
-pip3 install pydbus
+pip install pydbus
 git clone https://github.com/tnguye20/polybar-browsermediacontrol.git
 
 # Reset Fonts
 sudo fc-cache
 
 # Reinstall i3exit
-sudo pacman -S i3exit --noconfirm
+# sudo pacman -S i3exit --noconfirm
 
 cd $HOME/
 
 # Get BumbleBee Status for i3Status
-[ ! -d $HOME/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git $HOME/bumblebee-status
+# [ ! -d $HOME/bumblebee-status ] && git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git $HOME/bumblebee-status
 
 # Get nvm in case I'm still a node.js developer
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
