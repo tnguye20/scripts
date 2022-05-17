@@ -216,8 +216,8 @@ ln -s -f $HOME/.dotfiles/.config/mpd/mpd.conf $HOME/.config/mpd/
 ln -s -f $HOME/.dotfiles/.config/alacritty/ $HOME/.config
 ln -s -f $HOME/.dotfiles/.config/ranger/rc.conf $HOME/.config/ranger/
 ln -s -f $HOME/.dotfiles/.config/neofetch/config.conf $HOME/.config/neofetch/
-ln -s -f $HOME/.dotfiles/.calcurse/conf $HOME/.calcurse/
-ln -s -f $HOME/.dotfiles/.Xresources $HOME/.Xresources
+ln -s -f $HOME/.dotfiles/.calcurse/conf $HOME/.config/calcurse/
+# ln -s -f $HOME/.dotfiles/.Xresources $HOME/.Xresources
 ln -s -f $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -s -f $HOME/.dotfiles/.profile $HOME/.profile
 ln -s -f $HOME/.dotfiles/.cool-retro-term $HOME/cool-retro-term
@@ -257,7 +257,6 @@ vim +'PlugInstall' +qa
 vim +'source %' +qa
 
 # Install pywal
-sudo pacman -S python-pip --noconfirm
 sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
@@ -282,6 +281,6 @@ chown -R $USER:$USER $HOME/
 zsh
 
 # Boot into starship
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 [ -f "$HOME/doomMachine.sh" ] && rm -rf "$HOME/doomMachine.sh"
