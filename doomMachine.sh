@@ -8,7 +8,7 @@ cd /home/$USER
 
 # Update packages and install random things that I like
 sudo pacman -Syu --noconfirm
-sudo pacman -R vim
+sudo pacman -R vim --noconfirm
 sudo pacman -S \
   git \
   make \
