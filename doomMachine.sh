@@ -52,11 +52,10 @@ sudo pacman -S \
   xclip \
   feh \
   discord \
-  dbeaver \
   tmux \
   polybar \
   pavucontrol \
-  plasma-browser-integration \
+  # plasma-browser-integration \
   pdftk \
   ctags \
   pavucontrol \
@@ -71,13 +70,13 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Get tridactyl theme
-git clone https://github.com/bezmi/base16-tridactyl.git themes
+# git clone https://github.com/bezmi/base16-tridactyl.git themes
 
 # Init tridactyl
 curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && bash /tmp/trinativeinstall.sh master
 
 # Remove i3-gaps
-#sudo pacman -Rc i3-gaps --noconfirm
+# sudo pacman -Rc i3-gaps --noconfirm
 
 # Music Tool
 mkdir -p $HOME/.config/mpd/
@@ -119,11 +118,12 @@ git clone https://aur.archlinux.org/postman-bin.git
 git clone https://aur.archlinux.org/zsa-wally.git
 git clone https://aur.archlinux.org/drawio-desktop.git
 git clone https://aur.archlinux.org/alacritty-themes.git
-#git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
+# git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
-#git clone https://aur.archlinux.org/starship-bin.git
+# git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
-#git clone  https://aur.archlinux.org/ttf-patrick-hand-full.git
+git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
+git clone https://aur.archlinux.org/datagrip.git
 
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 rm -rf packages/*
@@ -133,8 +133,8 @@ python -m ensurepip --upgrade
 
 # Clone packages that does not require makepkg
 ## Music control for polybar
-pip install pydbus
-git clone https://github.com/tnguye20/polybar-browsermediacontrol.git
+# pip3 install pydbus
+# git clone https://github.com/tnguye20/polybar-browsermediacontrol.git
 
 # Reset Fonts
 sudo fc-cache
@@ -257,6 +257,7 @@ vim +'PlugInstall' +qa
 vim +'source %' +qa
 
 # Install pywal
+sudo pacman -S python-pip --noconfirm
 sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
