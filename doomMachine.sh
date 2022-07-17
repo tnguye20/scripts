@@ -65,6 +65,10 @@ sudo pacman -S \
   atril \
   --noconfirm
 
+yay -S \
+  nerdfetch \
+  --noconfirm
+
 # Get docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -124,6 +128,7 @@ git clone https://aur.archlinux.org/ifuse.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
 git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
 git clone https://aur.archlinux.org/datagrip.git
+git clone https://aur.archlinux.org/font-victor-mono.git
 
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 rm -rf packages/*
