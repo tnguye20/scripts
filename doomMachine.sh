@@ -129,6 +129,7 @@ git clone https://aur.archlinux.org/nerd-fonts-complete.git
 git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
 git clone https://aur.archlinux.org/datagrip.git
 git clone https://aur.archlinux.org/font-victor-mono.git
+git clone https://aur.archlinux.org/google-calendar-nativefier.git
 
 ls | xargs -I {} sh -c "cd {}; makepkg -sicf --noconfirm; cd -"
 rm -rf packages/*
