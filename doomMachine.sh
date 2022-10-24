@@ -124,7 +124,7 @@ git clone https://aur.archlinux.org/drawio-desktop.git
 git clone https://aur.archlinux.org/alacritty-themes.git
 # git clone https://aur.archlinux.org/i3-gaps-rounded-git.git
 git clone https://aur.archlinux.org/ifuse.git
-# git clone https://aur.archlinux.org/starship-bin.git
+git clone https://aur.archlinux.org/starship-bin.git
 git clone https://aur.archlinux.org/nerd-fonts-complete.git
 git clone https://aur.archlinux.org/ttf-patrick-hand-full.git
 git clone https://aur.archlinux.org/datagrip.git
@@ -288,6 +288,6 @@ chown -R $USER:$USER $HOME/
 zsh
 
 # Boot into starship
-#eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 [ -f "$HOME/doomMachine.sh" ] && rm -rf "$HOME/doomMachine.sh"
