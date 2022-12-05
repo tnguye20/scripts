@@ -8,4 +8,4 @@ repos=$(ls -l $repoPath | sed '1d' | awk '{ print $9 } ')
 # source $HOME/scripts/rofi_env
 # echo "$repos" | rofi -dmenu | xargs -I {} code "$repoPath{}"
 # echo "$repos" | rofi -dmenu | xargs -i {} code "$repoPath{}"
-ls -t "$repoPath" | while read A ; do  echo -en "📂 $A\n" ; done | rofi -dmenu | grep -iPo "[\w-_.]+" | xargs -I {} code "$repoPath{}"
+ls -t "$repoPath" | while read A ; do  echo -en "📂 $A\n" ; done | rofi -dmenu | grep -iPo "[\w-]+" | xargs -I {} code "$repoPath{}"
