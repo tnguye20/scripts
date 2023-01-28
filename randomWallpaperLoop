@@ -11,7 +11,7 @@ timeHandle()
 
   case $t in
     "-h")
-      echo "Accept a number to indicate time loop in second. Default is 1 minute"
+      echo "Accept a number to indicate time loop in second. Default is 15 minute"
       exit 0
       ;;
     *)
@@ -19,9 +19,9 @@ timeHandle()
   esac
 
 
-  time=60
+  time=900
   if [[ $# == 0 ]]; then
-    time=60
+    time=900
   else
     isNum=$(echo "$t" | grep -Po "^[\d]+$" | wc -l)
     if [[ "$isNum" == 0 ]]; then
@@ -37,9 +37,11 @@ timeHandle $@
 
 while [[ 1 ==  1 ]]; do
   echo "Time interval is: $time seconds"
-  image=$(/home/$USER/scripts/randomImageGet)
-  echo "Image: $image"
-  feh --bg-fill $image
+
+  /home/$USER/scripts/randomWallpaper
+  # image=$(/home/$USER/scripts/randomImageGet)
+  # echo "Image: $image"
+  # feh --bg-fill $image
   # wal -i $image
   sleep $time
 done
