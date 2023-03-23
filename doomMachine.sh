@@ -233,6 +233,9 @@ ln -s -f $HOME/.dotfiles/.config/nvim $HOME/.config
 ln -s -f $HOME/.dotfiles/.config/picom.conf $HOME/.config/
 ln -s -f $HOME/.dotfiles/.config/rofi $HOME/.config/rofi
 ln -s -f $HOME/.dotfiles/.vimrc $HOME/.ideavimrc
+## Use for MAC only
+ln -s -f $HOME/.dotfiles/.config/yabai $HOME/.config
+ln -s -f $HOME/.dotfiles/.config/skhd $HOME/.config
 
 cd $HOME/.dotfiles/ && git clean -f
 

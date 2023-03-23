@@ -1,3 +1,4 @@
 #!/bin/sh
 
-nohup yabai --config ~/yabairc &> /dev/null &
+brew services start yabai
+brew services start skhd
