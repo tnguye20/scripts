@@ -5,7 +5,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 image=$1
-imageName=$(echo $image | grep -Po "(?<=.wallpaper\/)(.*)$")
+imageName=$(echo $image | grep -Po "(?<=wallpapers\/)(.*)$")
 
 if [ ! -f $image ]; then
   echo 'Not a valid file'

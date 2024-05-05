@@ -209,6 +209,7 @@ else
   git lfs install --force
   git clone https://github.com/tnguye20/.dotfiles.git $HOME/.dotfiles
   git clone https://github.com/tnguye20/scripts.git $HOME/scripts
+  git clone https://github.com/tnguye20/wallpapers.git $HOME/wallpapers
   cd $HOME/.dotfiles
   git lfs install
   git lfs pull
@@ -240,7 +241,7 @@ ln -s -f $HOME/.dotfiles/.config/skhd $HOME/.config
 cd $HOME/.dotfiles/ && git clean -f
 
 # Copy first lockscreen to position
-# sudo cp $HOME/.dotfiles/.wallpaper/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
+# sudo cp $HOME/wallpapers/mr_robot.jpg /usr/share/backgrounds/lockscreen.png
 
 # rofi setup
 cd $HOME/packages
@@ -271,7 +272,7 @@ sudo pacman -S python-pip --noconfirm
 sudo pacman -S python-pywal --noconfirm
 
 # Set Default Wallpaper
-# feh --bg-scale $HOME/.dotfiles/.wallpaper/pink_mountain.jpg
+# feh --bg-scale $HOME/wallpapers/pink_mountain.jpg
 sh $HOME/scripts/randomWallpaper
 
 # Set ranger config

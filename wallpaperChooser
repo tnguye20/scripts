@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALL_PATH=$HOME/.dotfiles/.wallpaper/
+WALL_PATH=$HOME/wallpapers/
 images=$(ls "$WALL_PATH" | while read A ; do  echo -en "$A\x00icon\x1f$WALL_PATH/$A\n" ; done)
 
 # wal -i $wallpaper_path$image
