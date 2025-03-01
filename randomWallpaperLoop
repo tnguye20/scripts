@@ -19,9 +19,9 @@ timeHandle()
   esac
 
 
-  time=900
+  time=30
   if [[ $# == 0 ]]; then
-    time=900
+    time=30
   else
     isNum=$(echo "$t" | grep -Po "^[\d]+$" | wc -l)
     if [[ "$isNum" == 0 ]]; then
